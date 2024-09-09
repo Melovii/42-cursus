@@ -30,6 +30,7 @@ char	*ft_strncat(char *dest, char *src, int nb);
 char	*ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
+char	*ft_strstr(char *str, char *to_find);
 
 
 /* -=-=-=-=-	MEMORY		=-=-=-=-=-=- */
