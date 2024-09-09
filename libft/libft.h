@@ -9,13 +9,13 @@
 int		ft_atoi(const char *str);
 
 /* -=-=-=-=- 	CHARS		-=-=-=-=-=- */
-int		ft_isprint(char c);
-int		ft_isascii(char c);
-int		ft_isalpha(char c);
-int		ft_isdigit(char c);
-int		ft_isalnum(char c);
-int		ft_toupper(char c);
-int		ft_tolower(char c);
+int		ft_isprint(int c);
+int		ft_isascii(int c);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 /* -=-=-=-=-	STRINGS		=-=-=-=-=-=- */
 size_t	ft_strlen(const char *str);
