@@ -32,8 +32,10 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strstr(char *str, char *to_find);
 
-
 /* -=-=-=-=-	MEMORY		=-=-=-=-=-=- */
+void	*memcpy(void *dest, const void *src, size_t n);
+void	*memset(void *s, int c, size_t n);
+void	bzero(void *s, size_t n);
 
 /* -=-=-=-=-	FILES		=-=-=-=-=-=- */
 
