@@ -12,7 +12,7 @@ void	*memchr(const void *s, int c, size_t n)
 	while (index < n)
 	{
 		if (pstr[index] == ch)
-			return (s + index);
+			return ((void *)(pstr + index));
 		index++;
 	}
 	return (NULL);

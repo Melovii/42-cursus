@@ -12,7 +12,7 @@ void	*memmove(void *dest, const void *src, size_t n)
 
 	if ((psrc < pdest) && (psrc + n) > pdest)
 	{
-		while (n--);
+		while (n--)
 			*(pdest + n) = *(psrc + n);
 	}
 	else
