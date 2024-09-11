@@ -17,6 +17,7 @@ int		ft_isascii(int c);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
+int		ft_isspace(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	ft_putchar(char c);
@@ -43,6 +44,12 @@ void	ft_strclr(char *s);
 char	*ft_strnew(size_t size);
 char	*ft_strmap(char const *s, char (*f)(char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+char 	**ft_strsplit(char const *s, char c);
+int		ft_strequ(char const *s1, char const *s2);
+int		ft_strnequ(char const *s1, char const *s2, size_t n);
 
 /* -=-=-=-=-	MEMORY		=-=-=-=-=-=- */
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
