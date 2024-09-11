@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_strequ(char const *s1, char const *s2)
 {
@@ -8,7 +8,7 @@ int	ft_strequ(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (s1 == s2);
-	if (strlen(s1) != strlen(s2))
+	if (ft_strlen(s1) != ft_strlen(s2))
 		return (0);
 	ps1 = (char const *)s1;
 	ps2 = (char const *)s2;
