@@ -22,10 +22,10 @@ void	ft_putchar(char c);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
-char	*ft_strcat(char *dest, char *src);
-char	*ft_strncat(char *dest, char *src, int nb);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strcat(char *dest, char *src);
+char	*ft_strncat(char *dest, char *src, int nb);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	*ft_strdup(const char *s1);
@@ -33,6 +33,13 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strstr(char *str, char *to_find);
 void	ft_putstr(char const *s);
+void	ft_striter(char *s, void(*f)(char *));
+void	ft_striteri(char *s, void(*f)(unsigned int, char *));
+void	ft_strdel(char **as);
+void	ft_strclr(char *s);
+char	*ft_strnew(size_t size);
+char	*ft_strmap(char const *s, char (*f)(char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 /* -=-=-=-=-	MEMORY		=-=-=-=-=-=- */
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
