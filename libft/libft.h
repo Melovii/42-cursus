@@ -6,7 +6,10 @@
 #include <stddef.h>
 
 /* -=-=-=-=- 	NUMBERS		-=-=-=-=-=- */
+char	*ft_itoa(int nbr);
 int		ft_atoi(const char *str);
+int		ft_numlen(long int nbr);
+int		ft_abs(long int nbr);
 
 /* -=-=-=-=- 	CHARS		-=-=-=-=-=- */
 int		ft_isprint(int c);
