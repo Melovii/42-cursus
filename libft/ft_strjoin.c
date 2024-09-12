@@ -13,12 +13,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s1));
 	if (!s2)
 		return (ft_strdup(s2));
-
 	size = ft_strlen(s1) + ft_strlen(s2) + 1;
 	string = ft_memalloc(size);
 	if (!string)
 		return (NULL);
-
 	ft_strcpy(string, str1);
 	ft_strcat(string, str2);
 	return (string);

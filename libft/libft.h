@@ -1,9 +1,9 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stddef.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stddef.h>
 
 /* -=-=-=-=- 	NUMBERS		-=-=-=-=-=- */
 char	*ft_itoa(int nbr);
@@ -37,8 +37,8 @@ char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strstr(char *str, char *to_find);
 void	ft_putstr(char const *s);
-void	ft_striter(char *s, void(*f)(char *));
-void	ft_striteri(char *s, void(*f)(unsigned int, char *));
+void	ft_striter(char *s, void (*f)(char *));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_strdel(char **as);
 void	ft_strclr(char *s);
 char	*ft_strnew(size_t size);
@@ -47,7 +47,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
-char 	**ft_strsplit(char const *s, char c);
+char	**ft_strsplit(char const *s, char c);
 int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 
@@ -70,7 +70,7 @@ void	ft_putendl(char const *s);
 void	ft_putendl_fd(char const *s, int fd);
 
 /* -=-=-=-=-	LISTS		=-=-=-=-=-=- */
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;

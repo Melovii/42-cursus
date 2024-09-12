@@ -6,7 +6,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	size_t	i;
 
 	if (!s || !f)
-		return NULL;
+		return (NULL);
 	i = ft_strlen(s);
 	string = malloc((i + 1) * sizeof(char));
 	if (!string)

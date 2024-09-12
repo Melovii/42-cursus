@@ -6,5 +6,5 @@ void	ft_putstr(char const *s)
 	{
 		ft_putchar(*s);
 		s++;
-	}	
+	}
 }

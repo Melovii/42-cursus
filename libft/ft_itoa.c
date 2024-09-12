@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char		*ft_itoa(int nbr)
+char	*ft_itoa(int nbr)
 {
 	char	*string;
 	int		len;

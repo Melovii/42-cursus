@@ -13,4 +13,3 @@ int	ft_numlen(long int nbr)
 	}
 	return (len);
 }
-	
