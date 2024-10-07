@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:50:17 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 14:58:06 by mmunajed         ###   ########.fr       */
+/*   Created: 2024/10/07 11:53:10 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/10/07 15:09:03 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_numlen(long int nbr)
+static char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	len;
+	unsigned int	i;
 
-	if (nbr <= 0)
-		len = 1;
-	else
-		len = 0;
-	while (nbr != 0)
+	i = 0;
+	while (src[i] != '\0' && i < n)
 	{
-		nbr = nbr / 10;
-		len++;
+		dest[i] = src[i];
+		i++;
 	}
-	return (len);
-}
-
-static int	ft_abs(long int nbr)
-{
-	if (nbr < 0)
-		return (-nbr);
-	return (nbr);
+	while (i < n)
+	{
+		dest[n] = '\0';
+		i++;
+	}
+	return (dest);
 }
 
 static char	*ft_strnew(size_t size)
@@ -46,29 +41,15 @@ static char	*ft_strnew(size_t size)
 	return (string);
 }
 
-char	*ft_itoa(int n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*string;
-	int		len;
-	int		sign;
+	char	*substr;
 
-	if (n < 0)
-		sign = -1;
-	else
-		sign = 1;
-	len = ft_numlen(n);
-	string = (char *)ft_strnew(len + 1);
-	if (!string)
+	if (!s || start >= ft_strlen(s))
 		return (NULL);
-	string[len] = '\0';
-	len--;
-	while (len >= 0)
-	{
-		string[len] = '0' + ft_abs(n % 10);
-		n = ft_abs(n / 10);
-		len--;
-	}
-	if (sign == -1)
-		string[0] = '-';
-	return (string);
+	substr = ft_strnew(len + 1);
+	if (!substr)
+		return (NULL);
+	substr = ft_strncpy(substr, (char *)s + start, len);
+	return (substr);
 }

@@ -5,13 +5,19 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rc
 
 SRCS = $(wildcard *.c)
-OBJS = $(SRCS:.c=.o)
+OBJS = $(filter-out %_bonus.o, $(SRCS:.c=.o))
+
+BONUS_SRCS = $(wildcard *_bonus.c)
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
+
+bonus: $(BONUS_OBJS)
+	$(AR) $(NAME) $(BONUS_OBJS)
 
 all: $(NAME)
 
@@ -21,6 +27,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean all bonus
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

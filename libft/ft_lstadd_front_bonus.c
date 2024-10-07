@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:36:11 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 11:36:12 by mmunajed         ###   ########.fr       */
+/*   Created: 2024/10/07 13:55:30 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/10/07 15:17:48 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	unsigned char	*str;
-
-	str = (unsigned char *)s;
-	while (n != 0)
-	{
-		*str = '\0';
-		str++;
-		n--;
-	}
+	new->next = *lst;
+	*lst = new;
 }

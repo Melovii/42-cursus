@@ -1,4 +1,16 @@
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 11:52:15 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/10/07 13:29:33 by mmunajed         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
 

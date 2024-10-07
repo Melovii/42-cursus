@@ -1,6 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 11:53:13 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/10/07 15:07:21 by mmunajed         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+static char	*ft_strnew(size_t size)
+{
+	char	*string;
+
+	string = (char *)malloc((size + 1) * sizeof(char));
+	if (!string)
+		return (NULL);
+	ft_memset(string, 0, size + 1);
+	return (string);
+}
+
+static char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[n] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*string;
 	size_t	start;
@@ -8,15 +49,15 @@ char	*ft_strtrim(char const *s)
 	size_t	size;
 
 	start = 0;
-	while (ft_isspace(s[start]))
+	while (ft_strchr(set, s1[start]) && s1[start])
 		start++;
-	end = ft_strlen(s) - 1;
-	while (end > start && ft_isspace(s[end]))
-		end --;
+	end = ft_strlen(s1);
+	while (ft_strchr(set, s1[end - 1]) && end > start)
+		end--;
 	size = end - start;
 	string = ft_strnew(size + 1);
 	if (!string)
 		return (NULL);
-	ft_strncpy(string, (char *)s + start, size);
+	ft_strncpy(string, (char *)s1 + start, size);
 	return (string);
 }
