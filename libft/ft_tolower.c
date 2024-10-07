@@ -6,15 +6,15 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:53:15 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 11:53:16 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:42:42 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_tolower(int c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (c >= 'A' && c <= 'Z')
 		c += 32;
 	return (c);
 }

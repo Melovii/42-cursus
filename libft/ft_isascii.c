@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 11:50:05 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 11:50:06 by mmunajed         ###   ########.fr       */
+/*   Created: 2024/10/07 16:43:11 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/10/07 16:43:13 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
-		return (c);
+		return (1);
 	return (0);
 }

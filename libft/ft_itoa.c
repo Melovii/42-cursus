@@ -6,7 +6,7 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:50:17 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 14:58:06 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:21:32 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	*ft_strnew(size_t size)
 {
 	char	*string;
 
-	string = (char *)malloc((size + 1) * sizeof(char));
+	string = (char *)malloc((size + 1));
 	if (!string)
 		return (NULL);
 	ft_memset(string, 0, size + 1);
