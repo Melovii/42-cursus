@@ -19,7 +19,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	i = 0;
 	while (*s)
 	{
-		f(i, &s[i]);
+		f(i, s);
 		s++;
 		i++;
 	}

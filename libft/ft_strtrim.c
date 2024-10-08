@@ -55,9 +55,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (ft_strchr(set, s1[end - 1]) && end > start)
 		end--;
 	size = end - start;
-	string = ft_strnew(size + 1);
+	string = ft_strnew(size);
 	if (!string)
 		return (NULL);
 	ft_strncpy(string, (char *)s1 + start, size);
+	string[size] = '\0';
 	return (string);
 }
