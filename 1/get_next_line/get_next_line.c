@@ -5,54 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 10:56:02 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/10 14:52:53 by mmunajed         ###   ########.fr       */
+/*   Created: 2024/10/10 15:31:34 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/10/10 15:33:39 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 static char	*fill_line_buffer(int fd, char *leftover, char *buffer);
-static char	*set_line(char *line_buffer);
+static char	*set_line(char *line);
+static char	*ft_strchr(char *s, int c);
 
-// * Reads from a file descriptor and fills a buffer with the read data.
-static char	*fill_line_buffer(int fd, char *leftover, char *buffer)
+static char	*ft_strchr(char *s, int c)
 {
-	ssize_t	bytes_read;
-	char	*temp;
+	unsigned int	i;
+	char			cc;
 
-	bytes_read = 1;
-	while (bytes_read > 0)
+	cc = (char) c;
+	i = 0;
+	while (s[i])
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1)
-		{
-			free(leftover);
-			return (NULL);
-		}
-		else if (bytes_read == 0)
-			break ;
-		buffer[bytes_read] = 0;
-		if (!leftover)
-			leftover = ft_strdup("");
-		temp = leftover;
-		leftover = ft_strjoin(temp, buffer);
-		free(temp);
-		temp = NULL;
-		if (ft_strchr(buffer, '\n'))
-			break ;
+		if (s[i] == cc)
+			return ((char *) &s[i]);
+		i++;
 	}
-	return (leftover);
+	if (s[i] == cc)
+		return ((char *) &s[i]);
+	return (NULL);
 }
 
-// * Constructs a line from the buffer filled with read data.
 static char	*set_line(char *line_buffer)
 {
 	char	*leftover;
 	ssize_t	i;
 
 	i = 0;
-	while (line_buffer[i] != '\n' || line_buffer[i] != '\0')
+	while (line_buffer[i] != '\n' && line_buffer[i] != '\0')
 		i++;
 	if (line_buffer[i] == 0 || line_buffer[1] == 0)
 		return (NULL);
@@ -66,12 +54,40 @@ static char	*set_line(char *line_buffer)
 	return (leftover);
 }
 
-// * Function that returns next line from FD
+static char	*fill_line_buffer(int fd, char *leftover, char *buffer)
+{
+	ssize_t	read_bytes;
+	char	*temp;
+
+	read_bytes = 1;
+	while (read_bytes > 0)
+	{
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
+		if (read_bytes == -1)
+		{
+			free(leftover);
+			return (NULL);
+		}
+		else if (read_bytes == 0)
+			break ;
+		buffer[read_bytes] = 0;
+		if (!leftover)
+			leftover = ft_strdup("");
+		temp = leftover;
+		leftover = ft_strjoin(temp, buffer);
+		free(temp);
+		temp = NULL;
+		if (ft_strchr(buffer, '\n'))
+			break ;
+	}
+	return (leftover);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*leftover;
-	char		*line;
 	char		*buffer;
+	char		*line;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
@@ -92,21 +108,3 @@ char	*get_next_line(int fd)
 	leftover = set_line(line);
 	return (line);
 }
-
-// ! FOR IT TO ACCEPT STANDARD INPUT WHICH IS 0
-	// if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-
-// ! derefernce leftover if it's empty cause it's gone, basically reset/free it
-	// if (*leftover == 0)
-	// {
-	// 	free(leftover);
-	// 	leftover = NULL;
-	// }
-
-// ! TO TAKE -1
-	// ssize_t i;
-
-// ! static n file-local functions should be stated at the top of .c files
-// ! not in the header file
-	// static char	*fill_line_buffer(int fd, char *leftover, char *buffer);
-	// static char	*set_line(char *line_buffer);
