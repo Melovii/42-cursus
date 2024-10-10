@@ -6,7 +6,7 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:53:21 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 17:24:16 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/10 10:16:03 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 
-/* -=-=-=-=  LISTS (BONUS)  =-=-=-=-=- */
+/* -=-=-=-=   LISTS (BONUS)   =-=-=-=-=- */
 typedef struct s_list
 {
 	void			*content;
