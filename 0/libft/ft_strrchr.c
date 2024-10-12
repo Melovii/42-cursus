@@ -6,7 +6,7 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:53:01 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 11:53:02 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:25:11 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *str, int c)
 	size_t			index;
 
 	index = ft_strlen(str);
-	ch = c;
+	ch = (unsigned char)c;
 	ptr = (char *)str + index;
 	if (ch == '\0')
 		return (ptr++);
