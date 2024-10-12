@@ -3,20 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Melovi <Melovi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 12:41:32 by Melovi            #+#    #+#             */
-/*   Updated: 2024/10/11 15:11:43 by Melovi           ###   ########.fr       */
+/*   Updated: 2024/10/12 10:21:05 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*ft_strchr(char *s, int c);
-static char	*set_line(char *line);
-static char	*fill_line_buffer(int fd, char *leftover, char *buffer);
-
-static char	*ft_strchr(char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	unsigned int	i;
 	char			cc;
@@ -34,7 +30,7 @@ static char	*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-static char	*set_line(char *line_buffer)
+char	*set_line(char *line_buffer)
 {
 	char	*leftover;
 	ssize_t	i;
@@ -54,7 +50,7 @@ static char	*set_line(char *line_buffer)
 	return (leftover);
 }
 
-static char	*fill_line_buffer(int fd, char *leftover, char *buffer)
+char	*fill_line_buffer(int fd, char *leftover, char *buffer)
 {
 	ssize_t	read_bytes;
 	char	*temp;

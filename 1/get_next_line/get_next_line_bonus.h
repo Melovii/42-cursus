@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Melovi <Melovi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 12:41:53 by Melovi            #+#    #+#             */
-/*   Updated: 2024/10/11 15:13:08 by Melovi           ###   ########.fr       */
+/*   Updated: 2024/10/12 10:21:10 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,9 @@ char	*ft_strdup(char *s);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strjoin(char *s1, char *s2);
 void	fill_str(char *res, char *s1, char *s2);
+
+char	*ft_strchr(char *s, int c);
+char	*set_line(char *line);
+char	*fill_line_buffer(int fd, char *leftover, char *buffer);
 
 #endif
