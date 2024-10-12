@@ -6,11 +6,9 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:50:17 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 17:21:32 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/12 10:53:16 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 #include "libft.h"
 
