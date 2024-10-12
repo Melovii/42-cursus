@@ -6,7 +6,7 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:51:57 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/07 11:51:58 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/12 11:39:43 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strchr(const char *str, int c)
 	int				i;
 
 	i = 0;
-	ch = c;
+	ch = (unsigned char)c;
 	if (ch == '\0')
 	{
 		i = ft_strlen(str);
