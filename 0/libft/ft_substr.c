@@ -6,7 +6,7 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:53:10 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/12 12:14:18 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:23:53 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	slen = ft_strlen(s);
-	finish = slen - start;
 	if (start >= slen)
 	{
 		new = (char *)malloc(sizeof(char));
@@ -30,6 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		new[0] = '\0';
 		return (new);
 	}
+	finish = slen - start;
 	if (finish > len)
 		finish = len;
 	new = (char *)malloc(sizeof(char) * (finish + 1));
