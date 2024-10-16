@@ -6,7 +6,7 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:53:21 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/12 12:34:44 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:09:48 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stddef.h>
 
 /* -=-=-=-=- 	NUMBERS		-=-=-=-=-=- */
 int			ft_atoi(const char *str);
+char		*ft_itoa(int n);
 
 /* -=-=-=-=- 	CHARS		-=-=-=-=-=- */
 int			ft_isalpha(int c);
@@ -28,7 +28,6 @@ int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
-char		*ft_itoa(int n);
 
 /* -=-=-=-=-	STRINGS		=-=-=-=-=-=- */
 size_t		ft_strlen(const char *str);
