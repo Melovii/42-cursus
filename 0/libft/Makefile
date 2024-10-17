@@ -48,16 +48,10 @@ BONUS =		ft_lstiter_bonus.c \
 OBJS =	$(SRC:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
 
-CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
-INCLUDE = -I .
 
 all: $(NAME)
-
-.o:.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c $<
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
