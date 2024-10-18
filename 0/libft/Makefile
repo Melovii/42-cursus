@@ -48,23 +48,23 @@ BONUS =		ft_lstiter_bonus.c \
 OBJS =	$(SRC:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
 
-RM = rm -f
-AR = ar rcs
-
-all: $(NAME)
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rc
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
+
+all: $(NAME)
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
 
 clean:	
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
-re: fclean all
+re: fclean all bonus
 
 .PHONY: all bonus clean fclean re
