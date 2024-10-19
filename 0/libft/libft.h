@@ -6,14 +6,13 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:53:21 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/18 15:55:24 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:51:34 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
 # include <stdlib.h>
 
 int			ft_atoi(const char *str);

@@ -6,11 +6,9 @@
 /*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 11:53:18 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/10/16 16:41:48 by mmunajed         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:15:03 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_toupper(int c)
 {
