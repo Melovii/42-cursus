@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Melovi <Melovi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 13:23:48 by mmunajed          #+#    #+#             */
-/*   Updated: 2024/11/05 17:52:54 by Melovi           ###   ########.fr       */
+/*   Created: 2024/11/05 17:07:42 by Melovi            #+#    #+#             */
+/*   Updated: 2024/11/05 17:28:30 by Melovi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include "./libft/libft.h"
-# include <stdarg.h>
-# include <stdlib.h>
+int	ft_put_int(int n)
+{
+	int				nb;
+	unsigned int	i;
 
-int		ft_printf(const char *format, ...);
-int		ft_put_char(int c);
-int		ft_put_int(int n);
-int		ft_put_pointer(unsigned long value, int ch);
-int		ft_put_str(char *str);
-int		ft_put_unsigned(unsigned int n);
-int		ft_put_hex(unsigned int value, int ch);
-
-#endif
+	nb = n;
+	i = 1;
+	if (n < 0 && n != -2147483648)
+	{
+		nb = -n;
+		i++;
+	}
+	while (nb > 9)
+	{
+		nb = nb / 10;
+		i++;
+	}
+	ft_putnbr_fd(n, 1);
+	if (n == -2147483648)
+		return (11);
+	return (i);
+}
