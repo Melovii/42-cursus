@@ -3,58 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Melovi <Melovi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 16:58:22 by Melovi            #+#    #+#             */
-/*   Updated: 2024/11/05 18:10:38 by Melovi           ###   ########.fr       */
+/*   Created: 2024/12/05 10:51:16 by marvin            #+#    #+#             */
+/*   Updated: 2024/12/05 10:51:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	handle_type(char type, va_list args)
+static int	ft_handle_type(char specifier, va_list args)
 {
-	if (type == 'c')
-		return (ft_put_char(va_arg(args, int)));
-	else if (type == 's')
-		return (ft_put_str(va_arg(args, char *)));
-	else if (type == 'p')
-		return (ft_put_pointer(va_arg(args, unsigned long), 87));
-	else if (type == 'd' || type == 'i')
-		return (ft_put_int(va_arg(args, int)));
-	else if (type == 'u')
-		return (ft_put_unsigned(va_arg(args, unsigned int)));
-	else if (type == 'x')
-		return (ft_put_hex(va_arg(args, unsigned int), 87));
-	else if (type == 'X')
-		return (ft_put_hex(va_arg(args, unsigned int), 55));
+	int	count;
+
+	count = 0;
+	if (specifier == '\0')
+		return (count);
+	if (specifier == '%')
+		count += ft_putchar('%');
+	else if (specifier == 'c')
+		count += ft_put_c(args);
+	else if (specifier == 's')
+		count += ft_put_s(args);
+	else if (specifier == 'd' || specifier == 'i')
+		count += ft_put_n(args, "0123456789");
+	else if (specifier == 'u')
+		count += ft_put_u(args, "0123456789");
+	else if (specifier == 'x')
+		count += ft_put_u(args, "0123456789abcdef");
+	else if (specifier == 'X')
+		count += ft_put_u(args, "0123456789ABCDEF");
+	else if (specifier == 'p')
+		count += ft_put_p(args, "0123456789abcdef");
 	else
-		return (0);
+		count += ft_putchar(specifier);
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int		i;
 	int		count;
+	int		i;
 
 	i = 0;
 	count = 0;
 	va_start(args, format);
-	while (format[i] != '\0')
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == '%')
-				count += ft_put_char('%');
-			else if (ft_strchr("cspdiuxX%", format[i]))
-				count += handle_type(format[i], args);
-			else if (format[i] != '\0')
-				count += ft_put_char(format[i]);
+			count += ft_handle_type(format[i], args);	
 		}
 		else
-			count += ft_put_char(format[i]);
+			count += ft_putchar(format[i]);
 		i++;
 	}
 	va_end(args);
