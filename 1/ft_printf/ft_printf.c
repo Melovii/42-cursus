@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 10:51:16 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/05 10:51:16 by marvin           ###   ########.fr       */
+/*   Created: 2024/12/12 15:19:07 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/12/12 15:19:07 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			count += ft_handle_type(format[i], args);	
+			count += ft_handle_type(format[i], args);
 		}
 		else
 			count += ft_putchar(format[i]);

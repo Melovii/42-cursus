@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_char_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 13:22:13 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/05 13:22:13 by marvin           ###   ########.fr       */
+/*   Created: 2024/12/12 15:18:56 by mmunajed          #+#    #+#             */
+/*   Updated: 2024/12/12 15:18:56 by mmunajed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdlib.h>
 #include <unistd.h>
 
 int	ft_putchar(char c)
