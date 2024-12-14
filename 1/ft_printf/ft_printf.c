@@ -35,8 +35,6 @@ static int	ft_handle_type(char specifier, va_list args)
 		count += ft_put_u(args, "0123456789ABCDEF");
 	else if (specifier == 'p')
 		count += ft_put_p(args, "0123456789abcdef");
-	else
-		count += ft_putchar(specifier);
 	return (count);
 }
 
