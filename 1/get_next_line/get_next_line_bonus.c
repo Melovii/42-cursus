@@ -1,106 +1,45 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mmunajed <mmunajed@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 12:41:32 by Melovi            #+#    #+#             */
-/*   Updated: 2024/10/12 10:21:05 by mmunajed         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line_bonus.h"
 
-char	*ft_strchr(char *s, int c)
+// ! consider making this static char/
+// !! ADD HEADERS BROTHERRR
+// TODO: ABOVE ^^^
+
+char	*firstline(int fd, char *buffer)
 {
-	unsigned int	i;
-	char			cc;
+	char	*buf;
+	int		char_read;
 
-	cc = (char) c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == cc)
-			return ((char *) &s[i]);
-		i++;
-	}
-	if (s[i] == cc)
-		return ((char *) &s[i]);
-	return (NULL);
-}
-
-char	*set_line(char *line_buffer)
-{
-	char	*leftover;
-	ssize_t	i;
-
-	i = 0;
-	while (line_buffer[i] != '\n' && line_buffer[i] != '\0')
-		i++;
-	if (line_buffer[i] == 0 || line_buffer[1] == 0)
+	char_read = 1;
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
 		return (NULL);
-	leftover = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - i);
-	if (*leftover == 0)
+	while (!ft_found_newline(buffer) && char_read != 0)
 	{
-		free(leftover);
-		leftover = NULL;
-	}
-	line_buffer[i + 1] = 0;
-	return (leftover);
-}
-
-char	*fill_line_buffer(int fd, char *leftover, char *buffer)
-{
-	ssize_t	read_bytes;
-	char	*temp;
-
-	read_bytes = 1;
-	while (read_bytes > 0)
-	{
-		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (read_bytes == -1)
+		char_read = read(fd, buf, BUFFER_SIZE);
+		if (char_read == -1)
 		{
-			free(leftover);
+			free(buffer);
+			free(buf);
 			return (NULL);
 		}
-		else if (read_bytes == 0)
-			break ;
-		buffer[read_bytes] = 0;
-		if (!leftover)
-			leftover = ft_strdup("");
-		temp = leftover;
-		leftover = ft_strjoin(temp, buffer);
-		free(temp);
-		temp = NULL;
-		if (ft_strchr(buffer, '\n'))
-			break ;
+		buf[char_read] = '\0';
+		buffer = ft_strjoin(buffer, buf);
 	}
-	return (leftover);
+	free(buf);
+	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*leftover[FD_LIMIT];
-	char		*buffer;
 	char		*line;
+	static char	*buf[1024];
 
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-	{
-		free(leftover[fd]);
-		free(buffer);
-		leftover[fd] = NULL;
-		buffer = NULL;
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	}
-	if (!buffer)
+	buf[fd] = firstline(fd, buf[fd]);
+	if (buf[fd] == NULL)
 		return (NULL);
-	line = fill_line_buffer(fd, leftover[fd], buffer);
-	free(buffer);
-	buffer = NULL;
-	if (!line)
-		return (NULL);
-	leftover[fd] = set_line(line);
+	line = ft_extract_line(buf[fd]);
+	buf[fd] = ft_trim_buffer(buf[fd]);
 	return (line);
 }
