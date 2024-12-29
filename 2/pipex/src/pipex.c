@@ -1,75 +1,75 @@
-// Check the existence of infile and outfile
-	// be sure to understand what > does when the file does not exist
-	// - for cat -> sets bytes as 0 (supposedly for most things.. cause it's writing after all?)
-
-// Create the necessary pipe (or pipes)
-	// pipe() if I don't make bonus
-// Create a child process for each command
-// Wait for all the processes to end before writing to the outfile
+#include "pipex.h"
 
 // ! pipe[0] = input (read)
 // ! pipe[1] = output (write)
-
 // * example usage: < infile grep a1 | wc -w > outfile
 
-#include "pipex.h"
-#include <errno.h> // * for perror()
-#include <stdio.h> // * for perror() too lol
 // TODO: check headers later on (move to header file perhaps)
+// TODO: DECIDE HOW TO HANDLE SUCH ERRORS THAT WOULD TAKE A LOT OF LINES TO HANDLE BUT DON'T FALL INTO A CATEGORY IN ERROR_HANDLER() 
+// TODO: if input file doesn't exist, set bytes to 0 on the output file
+// * oh btw consider making the error_handler work with 2 parameters (with msg)
 
-int main(int argc, char **argv) // ? consider adding (char **envp) as an argument 
+void	ft_execute(char* cmd, char** envp)
 {
-	int	chan[2];
-	int	inputFD;
-	int	outputFD;
-    // Step 1: Argument Parsing
-    // Check if the number of arguments is correct (argc should be 5)
-    // If not, print an error message and return an error code (1)
-	if (argc != 4)
-		error_handler();
+	char**	cmds;
+	char*	path;
 
-    // Step 2: File Handling
-    // Open the input file (file1) for reading using open()
-    // If file cannot be opened, print an error message and exit the program
-	inputFD = ft_open_file("infile", 0);
-	outputFD = ft_open_file("outfile", 1);
-    
-    // Step 3: Create Pipe(s)
-    // Create a pipe using the pipe() system call to link the commands together
-    // If pipe creation fails, print an error message and close any opened files
+	cmds = ft_split(cmd, ' ');
+	path = ft_find_cmd(cmd[0], envp); // ! confirm whether to use [0] or not
 	
-	// ! ! ! !
-	// TODO: DECIDE HOW TO HANDLE SUCH ERRORS, ERRORS THAT WOULD TAKE A LOT OF LINES TO HANDLE BUT DON'T FALL INTO A CATEGORY IN ERROR_HANDLER() 
+	// * Execute the command using execve(path, cmds, envp)
+	// * If execve() fails:
+	//     - Print error: "pipex: command not found: <cmd>"
+	//     - Free cmds memory using ft_free_tab()
+	//     - Exit the program with a failure status
+}
+
+void	child(char** argv, int* chan, char** envp)
+{
+	int	fd;
+
+	// ! pipe[0] = input (read) = 0
+	fd = ft_open_file(argv[1], 0);
+
+	dup2(fd, 0);
+	dup2(chan[1], 1);
+	close(chan[0]);
+	ft_execute(argv[2], envp); // execute cmd1
+}
+
+void	parent(char** argv, int* chan, char** envp)
+{
+	int	fd;
+
+	// ! pipe[1] = output (write) = 1
+	fd = ft_open_file(argv[4], 1);
+	dup2(fd, 1);
+	dup2(chan[0], 0);
+	close(chan[1]);
+	ft_execute(argv[3], envp); // execute cmd2
+}
+
+int main(int argc, char** argv, char** envp) // ? consider adding (char** envp) as an argument 
+{
+	int		chan[2];
+	pid_t	pid;
+
+	if (argc != 5)
+		error_handler(1);
+
 	if (pipe(chan) < 0)
-	{
-		perror("pipe");
-		exit(1);
-	}
+		exit(-1);
 
+	pid = fork();
+	if (pid < 0)
+		exit(-1);
 
-    // Step 4: First Command Execution (cmd1)
-    // Fork a child process using fork()
-    // In the child process:
-    //     - Redirect stdin to the input file using dup2()
-    //     - Redirect stdout to the write end of the pipe using dup2()
-    //     - Close any unused file descriptors (input file and pipe write end)
-    //     - Execute cmd1 using execve()
-    //     - If execve() fails, print an error message and exit
+	if (pid == 0)
+		child(argv, chan, envp);
 
-    // Step 5: Second Command Execution (cmd2)
-    // Fork another child process using fork()
-    // In the second child process:
-    //     - Redirect stdin to the read end of the pipe using dup2()
-    //     - Redirect stdout to the output file using dup2()
-    //     - Close any unused file descriptors (pipe read end and output file)
-    //     - Execute cmd2 using execve()
-    //     - If execve() fails, print an error message and exit
+	parent(argv, chan, envp);
 
-    // Step 6: Parent Process
-    // Close the file descriptors (input file, output file, and pipe ends) in the parent process
-    // Wait for both child processes to finish using wait() or waitpid()
-
-    // Step 7: Clean Up and Exit
+    // * Clean Up and Exit (consider making a function for this, or call in exec func)
     // Ensure all file descriptors are properly closed
     // Exit the program successfully (return 0)
 }
