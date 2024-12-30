@@ -15,16 +15,13 @@ int	ft_open_file(char* file_name, int flow)
 	int	fd;
 
 	if (flow)
-		fd = open(file_name, O_WRONLY);
+		fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	else
-		fd = open(file_name, O_RDONLY);
+		fd = open(file_name, O_RDONLY, 0777);
 
-	// ! handle error, use a different way
 	if (fd < 0)
-	{
-		perror("Can not open file / File not found in directory");
-		error_handler(1); // ? should I use error_handler(0) or exit(1) or exit(0) instead?
-	}
+		exit(0);
+
 	return (fd);
 }
 
@@ -33,43 +30,68 @@ int	ft_open_file(char* file_name, int flow)
 
 void	ft_free_tab(char** tab)
 {
-	// * Iterate through the array and free each string.
-	// * Free the array itself after all strings have been freed.
+	size_t	i;
 
-	// Check if `tab` is not NULL.
-	// Iterate through the array:
-	//  - Use a loop to access each element (tab[i]).
-	//  - Call `free()` on each element to release its memory.
-	// After freeing all strings, free the array itself (the `tab` pointer).
-	// Ensure the pointer `tab` is not dereferenced after freeing.
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
 
 // TODO: Implement ft_get_envp function
 // This function retrieves a specific environment variable's value from the environment variables array.
-char	*ft_find_envp(char* name, char **envp)
+char	*ft_find_envp(char **envp)
 {
-	// * Iterate through the `envp` array to find the variable matching `name`.
-	// * Return the value of the variable if found (the part after the '=' character).
-	// * If the variable is not found, return NULL.
+	int		i;
+	char*	envp_path;
 
-	// Check if `name` and `envp` are not NULL.
-	// Iterate through the `envp` array:
-	//  - Use `strncmp()` to compare the beginning of each string in `envp` with `name`.
-	//  - Check if the string contains `name=` (variable name followed by '='). 
-	//    - For example, "PATH=/usr/bin" matches "PATH".
-	// If a match is found:
-	//  - Use `strchr()` or pointer arithmetic to locate the '=' character in the string.
-	//  - Return a pointer to the substring after '=' (the value of the environment variable).
-	// If no match is found, return NULL.
+	i = 0;
+	while (envp[i])
+	{
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+		{
+			envp_path = envp[i] + 5;
+			break ;
+		}
+		i++;
+	}
+
+	if (!envp_path)
+		exit(1);
+
+	return (envp_path);
 }
 // TODO: Implement ft_find_cmd function
 // This function will search for the full path of the given command in the directories listed in the PATH envpironment variable.
 char	*ft_find_cmd(char* cmd, char** envp)
 {
-	// Use getenvp("PATH") to retrieve the PATH variable.
-	// Split the PATH variable into directories (using ft_split or any string splitting method).
-	// Iterate over each directory and try to find the command using access() with X_OK flag.
-	// If the command is found, return the full path of the command.
-	// If no valid path is found, return NULL.
-	// Retrieve and return the PATH envpironment variable from the envpironment.
+	char**	cmd_options;
+	char**	path;
+	char*	path_part;
+	char*	exec;
+	int		index;
+
+	index = -1; // don't use 0 lol
+	path = ft_split(ft_find_envp(envp), ':');
+	cmd_options = ft_split(cmd, ' ');
+	while (path[++index])
+	{
+		path_part = ft_strjoin(path[index], "/"); // basically from /usr/bin to /usr/bin
+		exec = ft_strjoin(path_part, cmd_options[0]);
+		// ? ? ? ? ? ? ? ? ?
+		free(path_part); // ! WHY FREE?
+		if (access(exec, F_OK | X_OK) == 0)
+		{
+			ft_free_tab(cmd_options);
+			return (exec); // ? why return exec if we're dead?
+		}
+		free(exec);
+	}
+	ft_free_tab(path);
+	// ? ? ? ? ? ? ? ? ? ? ? ? ? ?
+	ft_free_tab(cmd_options); // ! WHY FREE?
+	return (cmd);
 }

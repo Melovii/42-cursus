@@ -3,28 +3,35 @@
 // ! pipe[0] = input (read)
 // ! pipe[1] = output (write)
 // * example usage: < infile grep a1 | wc -w > outfile
+// * example usage: ./pipex infile "grep a1" "wc -w" outfile
 
-// TODO: check headers later on (move to header file perhaps)
-// TODO: DECIDE HOW TO HANDLE SUCH ERRORS THAT WOULD TAKE A LOT OF LINES TO HANDLE BUT DON'T FALL INTO A CATEGORY IN ERROR_HANDLER() 
+// TODO: DECIDE HOW TO HANDLE SUCH ERRORS THAT WOULD TAKE A LOT OF LINES TO HANDLE BUT DON'T FALL INTO A CATEGORY IN ERROR_HANDLER()
 // TODO: if input file doesn't exist, set bytes to 0 on the output file
+// TODO: add messages based on the subject.pdf for when it fails
+// TODO: check all the frees that I've used.. are they even necessary?
+// TODO: test the hell out of the program lol (oh and uhh.. wtf about leaks? lol)
+
 // * oh btw consider making the error_handler work with 2 parameters (with msg)
 
-void	ft_execute(char* cmd, char** envp)
+static void	ft_execute(char* cmd, char** envp)
 {
 	char**	cmds;
 	char*	path;
 
 	cmds = ft_split(cmd, ' ');
-	path = ft_find_cmd(cmd[0], envp); // ! confirm whether to use [0] or not
+	path = ft_find_cmd(cmds[0], envp);
 	
-	// * Execute the command using execve(path, cmds, envp)
-	// * If execve() fails:
-	//     - Print error: "pipex: command not found: <cmd>"
-	//     - Free cmds memory using ft_free_tab()
-	//     - Exit the program with a failure status
+	if(execve(path, cmds, envp) == -1)
+	{
+		// ? can not understand this check...
+		ft_putstr_fd("pipex: command not found: ", 2);
+		ft_putendl_fd(cmds[0], 2);
+		ft_free_tab(cmds);
+		exit(0);
+	}
 }
 
-void	child(char** argv, int* chan, char** envp)
+static void	child(char** argv, int* chan, char** envp)
 {
 	int	fd;
 
@@ -37,7 +44,7 @@ void	child(char** argv, int* chan, char** envp)
 	ft_execute(argv[2], envp); // execute cmd1
 }
 
-void	parent(char** argv, int* chan, char** envp)
+static void	parent(char** argv, int* chan, char** envp)
 {
 	int	fd;
 
@@ -49,7 +56,7 @@ void	parent(char** argv, int* chan, char** envp)
 	ft_execute(argv[3], envp); // execute cmd2
 }
 
-int main(int argc, char** argv, char** envp) // ? consider adding (char** envp) as an argument 
+int main(int argc, char** argv, char** envp)
 {
 	int		chan[2];
 	pid_t	pid;
@@ -69,7 +76,5 @@ int main(int argc, char** argv, char** envp) // ? consider adding (char** envp) 
 
 	parent(argv, chan, envp);
 
-    // * Clean Up and Exit (consider making a function for this, or call in exec func)
-    // Ensure all file descriptors are properly closed
-    // Exit the program successfully (return 0)
+	return (0);
 }
