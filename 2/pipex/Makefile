@@ -1,8 +1,14 @@
+# ! consider adding -l flag for when compiling (to include libft properly)
+# TODO: fix building libft with default make 
+
 NAME = pipex
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall -fsanitize=address
 RM = rm -fr
-# SRCS =
+SRCS =	src/pipex.c			\
+		src/pipex_utils.c		\
+		libft/libft.a	\
+
 # SRCS_BONUS =
 
 $(NAME): $(SRCS)
