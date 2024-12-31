@@ -1,20 +1,20 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
-// TODO: get rid of unnecessary headers and consider changing structure
 // ! don't forget about adding only necessary headers for BOTH files (ask co-workers for affirmation)
 
 # include "../libft/libft.h"
-# include <unistd.h> // pipe, write, read maybe
-# include <stdlib.h> // malloc // didn't use malloc lol
-# include <fcntl.h> // open
-# include <errno.h> // for perror()
-# include <stdio.h> // for perror() too lol
+# include <unistd.h> // fork(), access(), execve(), dup2(), close(), pipe()
+# include <fcntl.h> // open(), file flags
+# include <stdio.h> // perror()
 
-// Step 1: Include necessary function prototypes
-// For example:
-// - find_command_path() to search for the full path of a command
-// - Any utility functions for string manipulation (ft_split, ft_strjoin, etc.)
+// * apparently pid_t is SOMETIMES included in <unistd.h> but it's good practice to directly include it (for portability)
+# include <sys/types.h> // for pid_t variable
+
+// * apparently free() and exit() are also sometimes included in other headers, but it's important to DIRECTLY INCLUDE IT
+# include <stdlib.h> // free(), exit()
+
+// # include <errno.h> // for sterror return value // didn't use errno explicitly so no need
 
 int		ft_open_file(char* file_name, int flow);
 char	*ft_find_cmd(char* cmd, char** envp);
