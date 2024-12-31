@@ -1,15 +1,22 @@
 # ! consider adding -l flag for when compiling (to include libft properly)
-# TODO: fix building libft with default make 
+# TODO: fix relinking (research this topic)
+# ? understand -C flag on a deep level
 
 NAME = pipex
-CC = gcc
-CFLAGS = -Werror -Wextra -Wall -fsanitize=address
-RM = rm -fr
-SRCS =	src/pipex.c			\
-		src/pipex_utils.c		\
-		libft/libft.a	\
 
-# SRCS_BONUS =
+CC = gcc
+
+CFLAGS = -Werror -Wextra -Wall -fsanitize=address # ? should I keep -fsanitize ?
+
+RM = rm -fr
+
+SRCS =	src/pipex.c			\
+		src/pipex_utils.c	\
+		libft/libft.a		\
+
+# SRCS_BONUS =	bonus/pipex_bonus.c			\
+				bonus/pipex_utils_bonus.c	\
+				libft/libft.a				\
 
 $(NAME): $(SRCS)
 	make all -C libft
@@ -28,5 +35,5 @@ clean:
 re: fclean all
 
 bonus: clean
-		make all -C libft
-		gcc $(CFLAGS) $(SRCS_BONUS) -o $(NAME)
+	make all -C libft
+	gcc $(CFLAGS) $(SRCS_BONUS) -o $(NAME)
