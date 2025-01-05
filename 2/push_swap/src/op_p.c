@@ -7,12 +7,11 @@ void	pa(t_liist **stack_a, t_liist **stack_b)
 
 	if (!*stack_a)
 		return ;
-
 	push_b = (*stack_b)->next;
 	(*stack_b)->next = *stack_a;
 	*stack_a = *stack_b;
 	*stack_b = push_b;
-	ft_putstr_fd("pa\n", 1);
+	write(1, "pa\n", 3);
 }
 
 // * Pushes from A to B
@@ -26,5 +25,5 @@ void	pb(t_liist **stack_a, t_liist **stack_b)
 	(*stack_a)->next = (*stack_b);
 	*stack_b = *stack_a;
 	*stack_a = push_a;
-	ft_putstr_fd("pb\n", 1);
+	write(1, "pb\n", 3);
 }
