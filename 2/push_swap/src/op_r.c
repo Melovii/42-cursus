@@ -1,4 +1,3 @@
-// op3.c (Stack Operations - ra, rb, rr)
 #include "push_swap.h"
 
 static void	ft_r(t_liist **stack)
