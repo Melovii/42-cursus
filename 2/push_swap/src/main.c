@@ -24,7 +24,7 @@ int	ft_check(t_liist* lst, int n, char* nbr)
 	return (1);
 }
 
-void	ft_init_stacks(int argc, char** argv)
+t_liist	*ft_init_stacks(int argc, char** argv)
 {
 	t_liist	*tmp;
 	t_liist	*res;
@@ -41,7 +41,7 @@ void	ft_init_stacks(int argc, char** argv)
 		nbr = ft_atoi(argv[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX || ft_check(res, nbr, argv[i]) == 0)
 		{
-			ft_puttr_fd("Error\n", 2);
+			ft_putstr_fd("Error\n", 2);
 			return (NULL);
 		}
 		tmp = ft_lstnew(nbr);
@@ -52,19 +52,27 @@ void	ft_init_stacks(int argc, char** argv)
 	return (res);
 }
 
+// ! - The first argument should be at the top of the stack
 int	main(int argc, char** argv)
 {
-	// ! - The first argument should be at the top of the stack
+	t_swap	*tab;
+	char	**args;
 
-/*
-	initialize program by
-	1. Checking if there's only one argument and exiting if true.
-	2. Allocating memory for the `t_swap` struct to hold stacks and their sizes.
-	3. Parsing input arguments (either from one or multiple arguments).
-	4. Initializing `stack_a` using the parsed arguments.
-	5. Initializing `stack_b` as empty.
-	6. Calculating the sizes of both stacks.
-	7. Assigning indexes to the elements in `stack_a`.
-	8. Checking if `stack_a` is already sorted.
-*/
+	if (argc == 1)
+		return (0);
+	tab = malloc(sizeof(t_swap));
+	if (!tab)
+		return (-1);
+	if (argc == 2)
+		args = ft_split(argv[1], ' '); // * first argument could be the only given argument as a string
+	else
+		args = argv;
+	tab->stack_a = ft_init_stacks(argc, args);
+	if (!tab->stack_a) // ? does this need double parntheses?
+		return (-1);
+	tab->stack_b = NULL;
+	tab->a_size = ft_lstsize(tab->stack_a);
+	tab->b_size = ft_lstsize(tab->stack_b);
+	add_index(tab->stack_a); // TODO: Implement this function to add indexes to stack_a
+	check_sort(tab); // TODO: Implement this function to determine size of stack_a and applies appropriate sorting alg
 }
