@@ -3,7 +3,7 @@
 // * Checks if the list is sorted in ascending order
 int	is_sorted(t_liist **stack)
 {
-	t_list	*tmp;
+	t_liist	*tmp;
 
 	tmp = *stack;
 	while (tmp && tmp->next)
@@ -18,7 +18,7 @@ int	is_sorted(t_liist **stack)
 // * Checks if list is sorted in descending order.
 int	is_rev_sorted(t_swap *tab)
 {
-	t_list	*tmp;
+	t_liist	*tmp;
 
 	tmp = tab->stack_a;
 	while (tmp)
@@ -44,10 +44,10 @@ int	lst_valid(t_liist **stack, int count)
 }
 
 // * Finds minimum element in the list.
-t_list	*find_min_lst(t_list **stack)
+t_liist	*find_min_lst(t_liist **stack)
 {
-	t_list	*tmp;
-	t_list	*min;
+	t_liist	*tmp;
+	t_liist	*min;
 
 	tmp = *stack;
 	min = *stack;
@@ -60,10 +60,10 @@ t_list	*find_min_lst(t_list **stack)
 }
 
 // * Finds maximum element in the list.
-t_list	*find_max_lst(t_list **stack)
+t_liist	*find_max_lst(t_liist **stack)
 {
-	t_list	*tmp;
-	t_list	*max;
+	t_liist	*tmp;
+	t_liist	*max;
 
 	tmp = *stack;
 	max = *stack;
