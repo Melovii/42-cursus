@@ -35,10 +35,6 @@ UTILS = $(UTILS_DIR)/ft_atoi.c \
 # Object files
 OBJS = $(SRCS:.c=.o) $(UTILS:.c=.o)
 
-# Bonus files (if needed)
-SRCS_BONUS = src/checker_bonus.c # Add other bonus files if necessary
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
 # Rules
 all: $(NAME)
 
@@ -46,14 +42,11 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-bonus: $(OBJS_BONUS)
-	$(CC) $(CFLAGS) $(OBJS_BONUS) -o checker
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
