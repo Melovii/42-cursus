@@ -58,7 +58,7 @@ void	sort_5n(t_swap *tab)
 		else
 			ra(&tab->stack_a); // Rotate stack_a to process the next element.
 	}
-	sort_3n(&tab->stack_a);
+	sort_3n(tab);
 	// Push the two smallest elements back from stack_b to stack_a.
 	pa(&tab->stack_a, &tab->stack_b);
 	pa(&tab->stack_a, &tab->stack_b);

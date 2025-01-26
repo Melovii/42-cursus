@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
 // * Pushes from B to A
-void	pa(t_liist **stack_a, t_liist **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b)
 {
-	t_liist	*push_b;
+	t_list	*push_b;
 
 	if (!*stack_a)
 		return ;
@@ -15,9 +15,9 @@ void	pa(t_liist **stack_a, t_liist **stack_b)
 }
 
 // * Pushes from A to B
-void	pb(t_liist **stack_a, t_liist **stack_b)
+void	pb(t_list **stack_a, t_list **stack_b)
 {
-	t_liist	*push_a;
+	t_list	*push_a;
 
 	if (!*stack_b)
 		return ;

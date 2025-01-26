@@ -1,9 +1,9 @@
 // main.c (Main Entry Point)
 #include "push_swap.h"
 
-int	ft_check(t_liist* lst, int n, char* nbr)
+int	ft_check(t_list* lst, int n, char* nbr)
 {
-	t_liist*	tmp;
+	t_list*	tmp;
 	int			i;
 
 	tmp = lst;
@@ -24,10 +24,10 @@ int	ft_check(t_liist* lst, int n, char* nbr)
 	return (1);
 }
 
-t_liist	*ft_init_stacks(int argc, char** argv)
+t_list	*ft_init_stacks(int argc, char** argv)
 {
-	t_liist	*tmp;
-	t_liist	*res;
+	t_list	*tmp;
+	t_list	*res;
 	long	nbr;
 	int		i;
 
@@ -46,7 +46,8 @@ t_liist	*ft_init_stacks(int argc, char** argv)
 		}
 		tmp = ft_lstnew(nbr);
 		ft_lstadd_back(&res, tmp);
-		tmp->next = -1;
+		// tmp->next = -1;
+		tmp->next = NULL;
 		i++;
 	}
 	return (res);

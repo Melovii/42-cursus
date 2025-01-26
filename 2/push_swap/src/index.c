@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
 // * Finds smallest content value in a given list
-int	find_min(t_liist *lst)
+int	find_min(t_list *lst)
 {
-	t_liist		*tmp;
+	t_list		*tmp;
 	long int	min;
 
 	min = LONG_MAX; // ? why assign to largest long?
@@ -18,9 +18,9 @@ int	find_min(t_liist *lst)
 }
 
 // * Replaces the index of the node that holds given value with a new matching content value
-void	replace_index(t_liist *lst, int value, int new_value)
+void	replace_index(t_list *lst, int value, int new_value)
 {
-	t_liist	*tmp;
+	t_list	*tmp;
 
 	tmp = lst;
 	while (tmp)
@@ -33,7 +33,7 @@ void	replace_index(t_liist *lst, int value, int new_value)
 }
 
 // * Adds index values to each node based on their content in ascending order
-void	add_index(t_liist *lst)
+void	add_index(t_list *lst)
 {
 	int	len;
 	int	min;

@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-static void	ft_r(t_liist **stack)
+static void	ft_r(t_list **stack)
 {
-	t_liist *head;
+	t_list *head;
 	if (!(*stack) && !(*stack)->next)
 		return ;
 	head = *stack;
@@ -12,21 +12,21 @@ static void	ft_r(t_liist **stack)
 }
 
 // * Rotates stack A (Shifts all elements of stack A from bottom to top)
-void	ra(t_liist **stack_a)
+void	ra(t_list **stack_a)
 {
 	ft_r(stack_a);
 	write(1, "ra\n", 3);
 }
 
 // * Rotates stack B (Shifts all elements of stack B from bottom to top)
-void	rb(t_liist **stack_b)
+void	rb(t_list **stack_b)
 {
 	ft_r(stack_b);
 	write(1, "rb\n", 3);
 }
 
 // * Does both ra and rb
-void	rr(t_liist **stack_a, t_liist **stack_b)
+void	rr(t_list **stack_a, t_list **stack_b)
 {
 	ft_r(stack_a);
 	ft_r(stack_b);
