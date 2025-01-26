@@ -16,18 +16,18 @@ void	sort_3n(t_swap *tab)
 	}
 
 	// ? since there is a check for if it's sorted, the first and last else if's are for catching
-
+	
 	// Swap the first 2 elements if the 1st and 2nd elements are smaller than the last
 	else if (tab->stack_a->content < last->content
 		&& tab->stack_a->next->content < last->content) // a < c && b < c 
 		sa(&tab->stack_a);
-
+	
 	// Rotate the stack to position smallest element at the top
 	// if the 1st element is greater and 2nd is smaller than the last
 	else if (tab->stack_a->content > last->content
 		&& tab->stack_a->next->content < last->content) // a > c && b < c
 		ra(&tab->stack_a);
-
+	
 	// Swap the first 2 elements then rotate 
 	// if the 1st element is smaller and the 2nd element is greater than than the last
 	else if (tab->stack_a->content < last->content
@@ -45,7 +45,7 @@ void	sort_3n(t_swap *tab)
 
 // * Sorts exactly 5 elements in stack_a in ascending order.
 // * Uses stack_b as temporary storage for the two smallest elements.
-void	sort_5n(t_swap *tab)
+void	sort_5n(t_swap	*tab)
 {
 	int	len;
 
@@ -65,13 +65,15 @@ void	sort_5n(t_swap *tab)
 	if (tab->stack_a->content > tab->stack_a->next->content)
 		sa(&tab->stack_a); // Swap the top two elements of stack_a if necessary to finalize sorting.
 }
- 
+
 // * Checks size of stack A and calls appropriate sorting
-void	check_sort(t_swap *tab)
+void	sort_call(t_swap *tab)
 {
 	int	len;
 
 	len = ft_lstsize(tab->stack_a);
+	if (is_sorted(&tab->stack_a))
+		return ;
 	if (len == 2)
 	{
 		// Just a singular swap lol.
@@ -84,5 +86,5 @@ void	check_sort(t_swap *tab)
 	else if (len == 5)
 		sort_5n(tab);
 	else
-		ft_quick_sort(&tab->stack_a, &tab->stack_b, len);
+		quick_sort(&tab->stack_a, &tab->stack_b, ft_lstsize(tab->stack_a));
 }

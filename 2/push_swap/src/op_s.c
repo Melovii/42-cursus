@@ -13,21 +13,21 @@ static void	ft_s(t_list **stack)
 }
 
 // * Swaps top two values in stack A
-void	sa(t_list** stack_a)
+void	sa(t_list **stack_a)
 {
 	ft_s(stack_a);
 	write(1, "sa\n", 3);
 }
 
 // * Swaps top two values in stack A
-void	sb(t_list** stack_b)
+void	sb(t_list **stack_b)
 {
 	ft_s(stack_b);
 	write(1, "sb\n", 3);
 }
 
 // * Does both sa and sb
-void	ss(t_list** stack_a, t_list** stack_b)
+void	ss(t_list **stack_a, t_list **stack_b)
 {
 	ft_s(stack_a);
 	ft_s(stack_b);

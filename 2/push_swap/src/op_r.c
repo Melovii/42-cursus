@@ -2,10 +2,11 @@
 
 static void	ft_r(t_list **stack)
 {
-	t_list *head;
-	if (!(*stack) && !(*stack)->next)
-		return ;
+	t_list	*head;
+
 	head = *stack;
+	if (!(*stack) || !((*stack)->next))
+		return ;
 	*stack = head->next;
 	head->next = NULL;
 	ft_lstlast(*stack)->next = head;
