@@ -1,22 +1,3 @@
-// #include "push_swap.h"
-
-// // 1. Implement Quick Sort Algorithm
-// // - Implement quicksort algorithm to sort stack_a
-// // - Choose a pivot element and partition the stack into two sub-stacks
-
-// // 2. Implement Helper Functions
-// // - Implement partitioning logic to divide the stack into two parts based on the pivot
-// // - Recursively sort each sub-stack
-
-// void	quick_sort(t_list **stack_a, t_list **stack_b, int count)
-// {
-// 	// do shit
-// }
-
-// ! ADD THIS ONE ON YOUR OWN TO LIBFT SHIT
-// ! atp don't compile libft, add your own: ft_lstlast, find_min_lst, find_max_lst or some shit idk man...............
-// ! also won't have to bother with shitty -C shit :)
-
 #include "push_swap.h"
 
 void	begin_sorting(t_list **stack1, t_list **stack2, t_push *push, int count)
@@ -112,11 +93,11 @@ void	quick_b(t_list **stack1, t_list **stack2, t_push *push)
 		}
 	}
 	if (ft_lstsize(*stack2))
-		push->max = find_max_lst(stack2)->index;
+		push->max = (find_max_lst(stack2))->index;
 	push->mid = (push->max - push->next) / 2 + push->next;
 }
 
-void	ft_quick_sort(t_list **stack1, t_list **stack2, int count)
+void	quick_sort(t_list **stack1, t_list **stack2, int count)
 {
 	t_push	push;
 
