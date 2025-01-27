@@ -1,29 +1,25 @@
 #include "utils.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(char *str)
 {
-	int	num;
-	int	sign;
-	int	i;
+	long	i;
+	long	sign;
+	long	nb;
 
-	num = 0;
+	nb = 0;
 	sign = 1;
 	i = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\n'
-			|| str[i] == '\f' || str[i] == '\r'
-			|| str[i] == '\v' || str[i] == '\t'))
+	while ((str[i] == '\n' || str[i] == '\t' || str[i] == ' ' )
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
-	if (str[i] == '+')
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
 		i++;
-	else if (str[i] == '-')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		sign *= -1;
+		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		num = (num * 10) + (str[i] - '0');
-		i++;
-	}
-	return (num * sign);
+	return (nb * sign);
 }
