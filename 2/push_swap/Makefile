@@ -16,7 +16,8 @@ SRCS =	$(SRC_DIR)/main.c 			\
 		$(SRC_DIR)/op_s.c 			\
 		$(SRC_DIR)/quick_sort.c 	\
 		$(SRC_DIR)/sort_handler.c 	\
-		$(SRC_DIR)/sort_utils.c
+		$(SRC_DIR)/sort_utils.c		\
+		$(SRC_DIR)/free.c			\
 
 UTILS =	$(UTILS_DIR)/ft_atoi.c 				\
 		$(UTILS_DIR)/ft_bzero.c 			\
