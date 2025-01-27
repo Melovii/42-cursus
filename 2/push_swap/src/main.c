@@ -53,6 +53,7 @@ t_list	*ft_init_stacks(char **ag, int ac)
 }
 
 // ! - The first argument should be at the top of the stack
+// TODO: fix "" working when given as an argument (also for INTMAX)
 int	main(int argc, char **argv) // TODO: fix the program not giving the prompt back when given empty parameters
 {
 	t_swap	*tab;
