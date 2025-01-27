@@ -51,4 +51,12 @@ void	sa(t_list **stack1);
 void	sb(t_list **stack2);
 void	ss(t_list **stack1, t_list **stack2);
 
+
+void	free_stack(t_list **stack);
+void	free_args(char **args);
+void	free_tab(t_swap *tab);
+int		ft_check(t_list *lst, int n, char *nbr);
+t_list	*process_argument(char *arg, t_list **res);
+
+
 #endif

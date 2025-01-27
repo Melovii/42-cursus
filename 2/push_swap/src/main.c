@@ -1,81 +1,108 @@
 #include "push_swap.h"
 
-int	ft_check(t_list *lst, int n, char *nbr)
+// * Initializes the stack with the provided arguments
+static t_list	*ft_init_stacks(char **ag, int ac)
 {
-	t_list	*tmp;
-	int		i;
+	t_list	*res;  // Pointer to hold the resulting stack
+	int		i;      // Index for iterating through arguments
 
-	tmp = lst;
-	i = 0;
-	while (nbr[i])
-	{
-		if (!(((nbr[i] == '-' || nbr[i] == '+') && ft_isdigit(nbr[i + 1])
-					&& (i == 0 || !ft_isdigit(nbr[i - 1])))
-				|| ft_isdigit(nbr[i])))
-			return (0);
-		i++;
-	}
-	while (tmp)
-	{
-		if (tmp->content == n)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
-t_list	*ft_init_stacks(char **ag, int ac)
-{
-	t_list	*tmp;
-	t_list	*res;
-	int		i;
-	long	nbr;
-
+	i = 1;
+	// If there is only one argument (argc == 2), start at index 0
 	if (ac == 2)
 		i = 0;
-	else
-		i = 1;
 	res = NULL;
+	// Loop through the arguments to build the stack
 	while (ag[i])
 	{
-		nbr = ft_atoi(ag[i]);
-		if (nbr > INT_MAX || nbr < INT_MIN || ft_check(res, nbr, ag[i]) == 0) // TODO: this doesn't handle values above INT_MAX for some reason.. fix it
-		{
-			ft_putstr_fd("Error\n", 2);
+		// Process the argument and add it to the stack
+		// If it fails, return NULL
+		if (!process_argument(ag[i], &res))
 			return (NULL);
-		}
-		tmp = ft_lstnew(nbr);
-		ft_lstadd_back(&res, tmp);
-		tmp->index = -1;
 		i++;
 	}
 	return (res);
 }
 
-// ! - The first argument should be at the top of the stack
-// TODO: fix "" working when given as an argument (also for INTMAX)
-// TODO: look for memory leaks and add necessary free()s
-// TODO: there is a leak for every singular element in stack + 1, meaning I should probably just free the stack right?
-int	main(int argc, char **argv) // TODO: fix the program not giving the prompt back when given empty parameters
+// * Parses and prepares arguments for stack initialization
+static char	**parse_arguments(int argc, char **argv)
+{
+	// If there's only one argument (argc == 2), split it by spaces
+	// Otherwise, return the original arguments
+	if (argc == 2)
+		return (ft_split(argv[1], ' '));
+	return (argv);
+}
+
+// * Allocates and initializes the t_swap structure
+static t_swap	*initialize_tab(void)
 {
 	t_swap	*tab;
-	char	**args;
 
-	if (argc == 1)
-		return (0);
+	// Allocate memory for the t_swap structure
 	tab = malloc(sizeof(t_swap));
 	if (!tab)
-		return (-1);
-	if (argc == 2)
-		args = ft_split(argv[1], ' '); // * first argument could be the only given argument as a string
-	else
-		args = argv;
-	tab->stack_a = ft_init_stacks(args, argc);
-	if (tab->stack_a == NULL)
-		return (-1);
+	{
+		// If allocation fails, print an error and return NULL
+		ft_putstr_fd("Error\n", 2);
+		return (NULL);
+	}
+	// Initialize the stacks as NULL
+	tab->stack_a = NULL;
 	tab->stack_b = NULL;
+	return (tab);
+}
+
+// * Sets up the stacks and their sizes in the t_swap structure
+static int	setup_stacks(t_swap *tab, char **args, int argc)
+{
+	// Initialize stack A with the given arguments
+	tab->stack_a = ft_init_stacks(args, argc);
+	// If the arguments were split (argc == 2), free them
+	if (argc == 2)
+		free_args(args); // Free args if allocated by ft_split
+	// If stack A was not initialized correctly, free the tab and return failure
+	if (!tab->stack_a)
+	{
+		free_tab(tab);
+		return (0);
+	}
+	// Initialize stack B as NULL (it starts empty)
+	tab->stack_b = NULL;
+	// Set the size of stack A and B
 	tab->asize = ft_lstsize(tab->stack_a);
 	tab->bsize = ft_lstsize(tab->stack_b);
+	// Add index to stack A's elements (presumably for sorting)
 	add_index(tab->stack_a);
+	return (1); // Return success
+}
+
+int	main(int argc, char **argv)
+{
+	t_swap	*tab;   // Pointer to hold the t_swap structure
+	char	**args;  // Parsed arguments
+
+	// If no arguments are provided, just return (no action)
+	if (argc == 1)
+		return (0);
+	// Initialize the t_swap structure
+	tab = initialize_tab();
+	if (!tab)
+		return (-1); // If initialization failed, return error
+	// Parse the arguments for stack initialization
+	args = parse_arguments(argc, argv);
+	if (!args)
+	{
+		// If parsing failed, free the tab and return error
+		free_tab(tab);
+		ft_putstr_fd("Error\n", 2);
+		return (-1);
+	}
+	// Set up the stacks using the parsed arguments
+	if (!setup_stacks(tab, args, argc))
+		return (-1); // If stack setup failed, return error
+	// Call the sorting function
 	sort_call(tab);
+	// Free allocated memory for the t_swap structure
+	free_tab(tab);
+	return (0); // Successful execution
 }
