@@ -54,6 +54,8 @@ t_list	*ft_init_stacks(char **ag, int ac)
 
 // ! - The first argument should be at the top of the stack
 // TODO: fix "" working when given as an argument (also for INTMAX)
+// TODO: look for memory leaks and add necessary free()s
+// TODO: there is a leak for every singular element in stack + 1, meaning I should probably just free the stack right?
 int	main(int argc, char **argv) // TODO: fix the program not giving the prompt back when given empty parameters
 {
 	t_swap	*tab;
