@@ -19,7 +19,8 @@
 # define FAILURE 1
 
 // * Stores image data for rendering
-typedef struct s_img {
+typedef struct s_img
+{
 	void	*img;
 	char	*addr;
 	int		bpx;
