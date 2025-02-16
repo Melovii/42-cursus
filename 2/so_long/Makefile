@@ -9,6 +9,8 @@ LIBFT		= libs/libft/libft.a
 GNL			= libs/get_next_line/get_next_line.a
 
 SRCS =	srcs/main.c			\
+		srcs/exit.c			\
+		srcs/parse.c		\
 		srcs/test.c			\
 
 OBJS = $(SRCS:.c=.o)
