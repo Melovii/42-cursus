@@ -18,6 +18,17 @@
 # define SUCCESS 0
 # define FAILURE 1
 
+// * Holds info related to map file reading and parsing
+typedef struct s_parse
+{
+	int		read;			// Number of bytes read from the map file or whether there are more lines to
+	char	*line;			// Holds a single line from the map file being read
+	int		total_lines;	// Total number of lines processed (height of the map)
+	int		line_len;		// Length of the current line being read (max width of the map)
+	int		prev_len;		// Length of the previous line (used for checking consistency of map width)
+	int		fd;				// File Descriptor for the map file, used to read the file
+}			t_parse;
+
 // * Stores image data for rendering
 typedef struct s_img
 {
@@ -60,7 +71,7 @@ typedef struct s_vars
 	t_key	*key;
 	t_pos	*pos;
 	t_img	*img;
-	t_img	tex[9];	// * textures
+	t_img	tex[9];	// textures
 }			t_vars;
 
 #endif
