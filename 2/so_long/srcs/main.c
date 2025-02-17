@@ -1,5 +1,6 @@
 #include "../so_long.h"
 
+// * Handle the quit event
 int	quit_event(t_vars *vars)
 {
 	ft_exit(NULL, vars, SUCCESS);
@@ -7,6 +8,7 @@ int	quit_event(t_vars *vars)
 	return (0);
 }
 
+// * Initialises the game program
 void	init_program(t_vars *vars)
 {
 	// vars->mlx = mlx_init(); // ?! WHY IS THIS NOT NECESSARY HERE BUT NECESSARY IN MAIN !?

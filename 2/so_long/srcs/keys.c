@@ -1,5 +1,6 @@
 #include "../so_long.h"
 
+// * Initialises key states
 t_key   *init_keys(void)
 {
 	t_key   *keys;
@@ -15,6 +16,7 @@ t_key   *init_keys(void)
 	return (keys);
 }
 
+// * Handle key press events
 int	key_press(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_ESC || keycode == KEY_EXIT) // ! good to keep them separate or? check it out!
@@ -30,6 +32,7 @@ int	key_press(int keycode, t_vars *vars)
 	return (1);
 }
 
+// * Handle key release events
 int	key_release(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_ESC || keycode == KEY_EXIT) // ! good to keep them separate or? check it out!
@@ -45,6 +48,7 @@ int	key_release(int keycode, t_vars *vars)
 	return (1);
 }
 
+// * Handle game events
 int	key_event(t_vars *vars)
 {
 	if (vars->coin == 0 && vars->map[vars->pos->y][vars->pos->x] == 'E')
