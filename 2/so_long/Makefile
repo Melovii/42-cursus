@@ -1,17 +1,25 @@
 # ! IMPORTANT:
 # TODO: replace libraries with repos from intra42
+# ! I mean bro dw, worst case scenario you add it as an external function and you can say oh uh look aha aha (sex)
+
+
+# TODO: FIX
+# ! fix: no player and no collectible (doesn't give error)
+# ! fix: gives error when ran on correct maps multiple times (no clue why?)
+# ! fix: doesn't work on map_eol.ber
 
 NAME		= so_long
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 MINILIBX	= libs/minilibx-linux/libmlx_Linux.a
 LIBFT		= libs/libft/libft.a
-GNL			= libs/get_next_line/get_next_line.a
 
 SRCS =	srcs/main.c			\
 		srcs/exit.c			\
 		srcs/parse.c		\
-		srcs/test.c			\
+		srcs/check.c		\
+		srcs/utils.c		\
+		srcs/utils2.c		\
 
 OBJS = $(SRCS:.c=.o)
 
@@ -35,7 +43,6 @@ $(NAME): 	$(MINILIBX) $(LIBFT) $(GNL) $(OBJS)
 		-I./inc								\
 		-I./libs/minilibx-linux $< -o $@	\
 		-I./libs/libft						\
-		-I./libs/get_next_line				\
 	
 
 $(MINILIBX):
@@ -46,11 +53,9 @@ $(LIBFT):
 		make -C libs/libft
 
 $(GNL):
-		make -C libs/get_next_line
 
 clean:
 		@make fclean -C libs/libft
-		@make fclean -C libs/get_next_line
 		rm -f $(OBJS)
 	
 fclean: clean

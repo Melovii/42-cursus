@@ -66,6 +66,7 @@ typedef struct s_vars
 	char	**map;
 	int		map_width;
 	int		map_height;
+	int		fail;
 	int		moves;
 	int		coin;
 	t_key	*key;
@@ -73,5 +74,14 @@ typedef struct s_vars
 	t_img	*img;
 	t_img	tex[9];	// textures
 }			t_vars;
+
+// * Function prototypes:
+
+t_parse		valid_map_file(char *argv, t_vars *vars);
+int			ft_exit(char *msg, t_vars *vars, int ret);
+int			ft_exitc(int set, t_vars *vars, int ret);
+void		parse_map(char *argv, t_vars *vars);
+int			check_is_file(char *argv, t_vars *vars);
+void		validate_elements(int *nbr, int r, t_vars *vars);
 
 #endif

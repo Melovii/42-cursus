@@ -28,19 +28,26 @@ void	extract_map_data(t_vars *vars, t_parse map_info)
 	vars->map_height = map_info.total_lines;	// Total number of lines (rows) in the map
 }
 
-void	parse_map()
+void	parse_map(char *argv, t_vars *vars)
 {
 	t_parse	map_info;
 	int		i;
 
 	i = 0;
-	// TODO: map_info files here
-	// ? File exists ?
-	// ? Map is rectangular ? (all lines should be the same length)
-	// ? Something is in the map ? (other than 01CPE)
-	// ? Map is enclosed with walls ? (first and lanst lines and columns must be 1)
-	// ? Only one exit exists ?
-	// ? Only one start position ?
-	// ? At least one coin ?
+	check_is_file(argv, vars);
+	map_info = valid_map_file(argv, vars);
+	vars->map = ft_calloc(sizeof(char *), (map_info.total_lines + 1));
+	if (!vars->map)
+		ft_exit(NULL, vars, FAILURE);
+	map_info.fd = open(argv, O_RDWR, 777);
+	map_info.read = 1;
+	while (map_info.read)
+	{
+		map_info.read = get_next_line(map_info.fd, &map_info.line);
+		vars->map[i++] = ft_strdup(map_info.line);
+		free(map_info.line);
+	}
+	close (map_info.fd);
+	extract_map_data(vars, map_info);
 	// ! ADVANCED CHECK: all coins are collectible??? !
 }
