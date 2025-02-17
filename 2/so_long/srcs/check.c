@@ -60,7 +60,7 @@ static int	count_map_elements(char *line, int r, t_vars *vars)
 		j = 0;
 		while (j < 3)
 		{
-			if (line[i] == playable[i])
+			if (line[i] == playable[j])
 				nbr[j]++;
 			j++;
 		}
