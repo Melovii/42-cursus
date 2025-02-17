@@ -9,14 +9,16 @@
 # include "mlx.h"
 
 # define KEY_ESC 65307
+# define KEY_EXIT 33
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
-# define RED_CROSS 33
 
 # define SUCCESS 0
 # define FAILURE 1
+
+# define TITLE "mac-pan (pac-man lmao)"
 
 // * Holds info related to map file reading and parsing
 typedef struct s_parse
@@ -83,5 +85,10 @@ int			ft_exitc(int set, t_vars *vars, int ret);
 void		parse_map(char *argv, t_vars *vars);
 int			check_is_file(char *argv, t_vars *vars);
 void		validate_elements(int *nbr, int r, t_vars *vars);
+t_key   	*init_keys(void);
+int			key_press(int keycode, t_vars *vars);
+int			key_release(int keycode, t_vars *vars);
+
+// ! and other function prototypes lol
 
 #endif
