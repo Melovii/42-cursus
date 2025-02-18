@@ -7,7 +7,7 @@ void	extract_map_data(t_vars *vars, t_parse map_info)
 	
 	row = 0;
 	vars->coin = 0;
-	while (vars->map[row][col])
+	while (vars->map[row])
 	{
 		col = 0;
 		while (vars->map[row][col])
