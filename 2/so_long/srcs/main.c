@@ -20,7 +20,7 @@ void	init_program(t_vars *vars)
 	if (!vars->win)
 		ft_exit("Error\n=> Canʻt create window!", vars, FAILURE);
 
-	tex_all(vars);
+	// tex_all(vars);
 	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bpx, &vars->img->line_len, &vars->img->endian); // ? check fucking norm?
 	if (!vars->img->addr)
 	{
