@@ -80,7 +80,7 @@ typedef struct s_vars
 	t_key	*key;
 	t_pos	*pos;
 	t_img	*img;
-	t_img	tex[9];	// textures
+	t_img	tex[5];	// textures
 }			t_vars;
 
 // * Function prototypes:
