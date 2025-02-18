@@ -8,7 +8,7 @@ t_key   *init_keys(void)
 	keys = malloc(sizeof(t_key));
 	if (!keys)
 		return (NULL);
-	keys->dir;
+	keys->dir = 0;
 	keys->w = 0;
 	keys->a = 0;
 	keys->s = 0;

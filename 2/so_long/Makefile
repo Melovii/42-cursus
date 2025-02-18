@@ -18,6 +18,9 @@ SRCS =	srcs/main.c			\
 		srcs/exit.c			\
 		srcs/parse.c		\
 		srcs/check.c		\
+		srcs/keys.c			\
+		srcs/images.c		\
+		srcs/textures.c		\
 		srcs/utils.c		\
 		srcs/utils2.c		\
 

@@ -5,8 +5,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "libft.h"
-# include "mlx.h"
+# include "./libs/libft/libft.h"
+# include "./libs/minilibx-linux/mlx.h"
 
 # define KEY_ESC 65307
 # define KEY_EXIT 33
@@ -19,6 +19,12 @@
 # define FAILURE 1
 
 # define TITLE "mac-pan (pac-man lmao)"
+
+# define TEX_WALL "./textures/border.xpm"
+# define TEX_BLANK "./textures/space.xpm"
+# define TEX_PLAYER "./textures/pacman.xpm"
+# define TEX_COIN "./textures/coin.xpm"
+# define TEX_EXIT "./textures/strawberry.xpm"
 
 // * Holds info related to map file reading and parsing
 typedef struct s_parse
@@ -88,6 +94,9 @@ void		validate_elements(int *nbr, int r, t_vars *vars);
 t_key   	*init_keys(void);
 int			key_press(int keycode, t_vars *vars);
 int			key_release(int keycode, t_vars *vars);
+void		tex_all(t_vars *vars);
+int			gameloop(t_vars *vars);
+void		move_player(t_vars *vars);
 
 // ! and other function prototypes lol
 

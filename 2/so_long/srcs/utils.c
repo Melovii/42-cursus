@@ -1,5 +1,16 @@
 #include "../so_long.h"
 
+void	move_player(t_vars *vars)
+{
+	(void)vars;
+}
+
+int	gameloop(t_vars *vars)
+{
+	(void)vars;
+	return (1);
+}
+
 // TODO: refactor code into using correct numbers (remove unused ones too)
 int	ft_exitc(int set, t_vars *vars, int ret)
 {

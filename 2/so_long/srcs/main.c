@@ -12,21 +12,20 @@ int	quit_event(t_vars *vars)
 void	init_program(t_vars *vars)
 {
 	// vars->mlx = mlx_init(); // ?! WHY IS THIS NOT NECESSARY HERE BUT NECESSARY IN MAIN !?
-	vars->img->img = mlx_new_image(vars->mlx,
-		100 * vars->map_width, 100 * vars->map_height);
+	vars->img->img = mlx_new_image(vars->mlx, 100 * vars->map_width, 100 * vars->map_height);
 	if (!vars->img->img)
 		ft_exit("Error\n=> Canʻt create image!", vars, FAILURE); // ? check norm might be long lol
 
-	vars->win = mlx_new_window(vars->mlx,
-		100 * vars->map_width, 100 * vars->map_height, TITLE); // ? check norm for this shit lmfao
+	vars->win = mlx_new_window(vars->mlx, 100 * vars->map_width, 100 * vars->map_height, TITLE); // ? check norm for this shit lmfao
 	if (!vars->win)
 		ft_exit("Error\n=> Canʻt create window!", vars, FAILURE);
 
-	tex_all(vars); // TODO: create tex_all function
-	vars->img->addr = mlx_get_data_addr(vars->img->img,
-					&vars->img->bpx, &vars->img->line_len, vars->img->endian); // ? check fucking norm?
+	tex_all(vars);
+	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bpx, &vars->img->line_len, &vars->img->endian); // ? check fucking norm?
 	if (!vars->img->addr)
+	{
 		ft_exit("Error\n=> Canʻt get image address!", vars, FAILURE); // ? I think no need...? double check lol
+	}
 
 		vars->img->width = 1000; // why
 		vars->img->height = 1000; // why
@@ -35,7 +34,7 @@ void	init_program(t_vars *vars)
 		mlx_hook(vars->win, 2, 1L << 0, key_press, vars); // yeah like why is this not enough
 		mlx_hook(vars->win, 3, 1L << 1, key_release, vars); // wtf is dis
 		mlx_hook(vars->win, KEY_EXIT, 1L << 2, quit_event, vars); // uhm ok but why?
-		mlx_loop_hook(vars->mlx, event_loop, vars); // TODO: create event_loop / game_loop function!
+		mlx_loop_hook(vars->mlx, gameloop, vars); // TODO: create event_loop / game_loop function!
 		mlx_loop(vars->mlx);
 }
 
@@ -55,7 +54,7 @@ int	main(int argc, char **argv)
 	if (!vars->pos)
 		ft_exit("Error\n=> Can't malloc (pos)!\n", vars, FAILURE);
 
-	vars->key = init_key();
+	vars->key = init_keys();
 	if (!vars->key)
 		ft_exit("Error\n=> Can't malloc (key)!\n", vars, FAILURE);
 
