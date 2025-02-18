@@ -56,13 +56,13 @@ void draw_map(t_vars *vars)
 		while (vars->map[y][x])
 		{
 			if (vars->map[y][x] == 'C')
-				draw_tile(vars, 2, x, y);
-			else if (vars->map[y][x] == 'E')
 				draw_tile(vars, 3, x, y);
-			else if (vars->map[y][x] == '0')
+			else if (vars->map[y][x] == 'E')
 				draw_tile(vars, 4, x, y);
-			else if (vars->map[y][x] == '1')
+			else if (vars->map[y][x] == '0')
 				draw_tile(vars, 1, x, y);
+			else if (vars->map[y][x] == '1')
+				draw_tile(vars, 0, x, y);
 			x++;
 		}
 		y++;
