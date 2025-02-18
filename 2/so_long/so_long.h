@@ -94,9 +94,12 @@ void		validate_elements(int *nbr, int r, t_vars *vars);
 t_key   	*init_keys(void);
 int			key_press(int keycode, t_vars *vars);
 int			key_release(int keycode, t_vars *vars);
+int			key_event(t_vars *vars);
 void		tex_all(t_vars *vars);
 int			gameloop(t_vars *vars);
 void		move_player(t_vars *vars);
+void 		draw_map(t_vars *vars);
+void 		draw_player(t_vars *vars);
 
 // ! and other function prototypes lol
 

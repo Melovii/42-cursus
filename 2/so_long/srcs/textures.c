@@ -16,11 +16,15 @@ void    set_tex(char *path, t_vars *vars, t_img *tex)
         ft_exit("Error\n=> Can't load texture:", vars, FAILURE); // ! change this into a default msg without path (cause can't add \n ffs)
 	}
 	tex->addr = mlx_get_data_addr(tex->img, &tex->bpx, &tex->line_len, &tex->endian); // ! why..?
+	if (tex->addr == NULL)
+	{
+		ft_exit("Error: Failed to get texture address", vars, 1);
+	}
 }
+
 // * Loads textures into the tex[] array for sprites
 void	tex_all(t_vars *vars)
 {
-	// TODO: update tex[] array size (6 ?)
 	set_tex(TEX_WALL, vars, &vars->tex[0]);
 	set_tex(TEX_BLANK, vars, &vars->tex[1]);
 	set_tex(TEX_PLAYER, vars, &vars->tex[2]);

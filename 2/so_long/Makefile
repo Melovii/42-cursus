@@ -11,6 +11,7 @@
 NAME		= so_long
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
+# CFLAGS		= -g
 MINILIBX	= libs/minilibx-linux/libmlx_Linux.a
 LIBFT		= libs/libft/libft.a
 
