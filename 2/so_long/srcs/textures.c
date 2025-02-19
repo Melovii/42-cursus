@@ -23,11 +23,16 @@ void    set_tex(char *path, t_vars *vars, t_img *tex)
 }
 
 // * Loads textures into the tex[] array for sprites
-void	tex_all(t_vars *vars)
+void tex_all(t_vars *vars)
 {
-	set_tex(TEX_WALL, vars, &vars->tex[0]);
-	set_tex(TEX_BLANK, vars, &vars->tex[1]);
-	set_tex(TEX_PLAYER, vars, &vars->tex[2]);
-	set_tex(TEX_COIN, vars, &vars->tex[3]);
-	set_tex(TEX_EXIT, vars, &vars->tex[4]);
+    set_tex(TEX_WALL, vars, &vars->tex[0]);    // Index 0: Wall
+    printf("Wall texture loaded: %p\n", vars->tex[0].img);
+    set_tex(TEX_BLANK, vars, &vars->tex[1]);   // Index 1: Blank
+    printf("Blank texture loaded: %p\n", vars->tex[1].img);
+    set_tex(TEX_PLAYER, vars, &vars->tex[2]);  // Index 2: Player
+    printf("Player texture loaded: %p\n", vars->tex[2].img);
+    set_tex(TEX_COIN, vars, &vars->tex[3]);    // Index 3: Coin
+    printf("Coin texture loaded: %p\n", vars->tex[3].img);
+    set_tex(TEX_EXIT, vars, &vars->tex[4]);    // Index 4: Exit
+    printf("Exit texture loaded: %p\n", vars->tex[4].img);
 }

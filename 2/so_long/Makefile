@@ -2,10 +2,7 @@
 # TODO: replace libraries with repos from intra42
 # ! I mean bro dw, worst case scenario you add it as an external function and you can say oh uh look aha aha (sex)
 
-
 # TODO: FIX
-# ! fix: no player and no collectible (doesn't give error)
-# ! fix: gives error when ran on correct maps multiple times (no clue why?)
 # ! fix: doesn't work on map_eol.ber
 
 NAME		= so_long
