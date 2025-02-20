@@ -6,6 +6,7 @@ static int	is_border_line(char *line, int len)
 {
 	int	i;
 
+	(void)len;
 	i = 0;
 	while (line[i])
 	{
