@@ -28,6 +28,8 @@
 # define TEX_COIN "./textures/rune.xpm"
 # define TEX_EXIT "./textures/door.xpm"
 
+// TODO: add definitions for long ass fails/msgs/exits
+
 // * Holds info related to map file reading and parsing
 typedef struct s_parse
 {
@@ -101,6 +103,7 @@ int			gameloop(t_vars *vars);
 void		move_player(t_vars *vars);
 void 		draw_map(t_vars *vars);
 void 		draw_player(t_vars *vars);
+int	check_path_to_coin(t_vars *vars);
 
 // ! and other function prototypes lol
 

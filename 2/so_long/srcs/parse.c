@@ -49,5 +49,6 @@ void	parse_map(char *argv, t_vars *vars)
 	}
 	close (map_info.fd);
 	extract_map_data(vars, map_info);
-	// ! ADVANCED CHECK: all coins are collectible??? !
+	if (!check_path_to_coin(vars))
+		ft_exit("Error\n=> Oh, Tarnished… you seek to claim all coins, yet the path is shattered and no grace shall guide you.\n", vars, FAILURE);
 }
