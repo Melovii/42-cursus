@@ -17,10 +17,10 @@ SRCS =	srcs/main.c			\
 		srcs/parse.c		\
 		srcs/check.c		\
 		srcs/keys.c			\
-		srcs/images.c		\
+		srcs/draw.c			\
 		srcs/textures.c		\
-		srcs/utils.c		\
-		srcs/utils2.c		\
+		srcs/game_logic.c	\
+		srcs/validation.c	\
 
 OBJS = $(SRCS:.c=.o)
 
