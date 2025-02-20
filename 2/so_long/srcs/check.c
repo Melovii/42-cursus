@@ -2,25 +2,31 @@
 
 // ! why are my functions static ?????????
 
-// * Checks if map is enclosed by walls (1s)
-static int	map_has_walls(char *line, int is_border, int len, t_vars *vars)
+static int	is_border_line(char *line, int len)
 {
 	int	i;
 
 	i = 0;
-	if (is_border == 1)
+	while (line[i])
 	{
-		while (line[i])
-		{
-			if (line[i] != '1')
-				ft_exitc(1, vars, FAILURE); // ! WHAT?
-			i++;
-		}
+		if (line[i] != '1')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	map_has_walls(char *line, int is_border, int len, t_vars *vars)
+{
+	if (is_border)
+	{
+		if (!is_border_line(line, len))
+			ft_exitc(1, vars, FAILURE);
 	}
 	else
 	{
-		if ((line[i] != '1') || (line[len - 1] != '1')) // ? do nut understand
-			ft_exitc(1, vars, FAILURE);// ! WHAT?
+		if (line[0] != '1' || line[len - 1] != '1')
+			ft_exitc(1, vars, FAILURE);
 	}
 	return (1);
 }
@@ -46,21 +52,18 @@ static int	map_is_valid(char *line, t_vars *vars)
 // * Checks if there exists: 1 exit, 1 starting position, and at least 1 coin
 static int	count_map_elements(char *line, int r, t_vars *vars)
 {
-	const char	playable[] = {'C', 'P', 'E'};
-	static int	nbr[3] = {0};
+	static int	nbr[3] = {0}; // C, P, E counts
 	int			i;
-	int			j;
 
 	i = 0;
 	while (line[i])
 	{
-		j = 0;
-		while (j < 3)
-		{
-			if (line[i] == playable[j])
-				nbr[j]++;
-			j++;
-		}
+		if (line[i] == 'C')
+			nbr[0]++;
+		else if (line[i] == 'P')
+			nbr[1]++;
+		else if (line[i] == 'E')
+			nbr[2]++;
 		i++;
 	}
 	validate_elements(nbr, r, vars);
