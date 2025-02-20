@@ -18,15 +18,15 @@
 # define SUCCESS 0
 # define FAILURE 1
 
-# define TITLE "mac-pan (pac-man lmao)"
+# define TITLE "Guided by Grace"
 
 # define SCALE_FACTOR 2
 
 # define TEX_WALL "./textures/border.xpm"
-# define TEX_BLANK "./textures/space.xpm"
-# define TEX_PLAYER "./textures/pacman.xpm"
-# define TEX_COIN "./textures/coin.xpm"
-# define TEX_EXIT "./textures/strawberry.xpm"
+# define TEX_BLANK "./textures/mars.xpm"
+# define TEX_PLAYER "./textures/tarnished.xpm"
+# define TEX_COIN "./textures/rune.xpm"
+# define TEX_EXIT "./textures/door.xpm"
 
 // * Holds info related to map file reading and parsing
 typedef struct s_parse
@@ -58,7 +58,6 @@ typedef struct s_key
 	int	a;
 	int	s;
 	int	d;
-	int	dir;
 }			t_key;
 
 // * Stores the player's position
