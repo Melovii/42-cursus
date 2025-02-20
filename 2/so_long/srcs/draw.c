@@ -1,7 +1,5 @@
 #include "../so_long.h"
 
-// TODO: fix window scaling 
-// TODO: remove key->dir from struct and usage
 // TODO: oh btw test if map that has no access to finish gives error or not lmfao
 void draw_tile(t_vars *vars, int i, int x_index, int y_index)
 {

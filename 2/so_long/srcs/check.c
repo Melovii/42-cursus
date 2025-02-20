@@ -5,7 +5,6 @@
 // * Checks if map is enclosed by walls (1s)
 static int	map_has_walls(char *line, int is_border, int len, t_vars *vars)
 {
-	// TODO: Check if first and last row/column are 1s
 	int	i;
 
 	i = 0;
@@ -29,7 +28,6 @@ static int	map_has_walls(char *line, int is_border, int len, t_vars *vars)
 // * Checks if map line contains only valid characters
 static int	map_is_valid(char *line, t_vars *vars)
 {
-	// TODO: Verify that each character in the line is one of the allowed characters.
 	int	i;
 
 	i = 0;
@@ -48,7 +46,6 @@ static int	map_is_valid(char *line, t_vars *vars)
 // * Checks if there exists: 1 exit, 1 starting position, and at least 1 coin
 static int	count_map_elements(char *line, int r, t_vars *vars)
 {
-	// TODO: Count occorunces of 'C', 'P', and 'E'
 	const char	playable[] = {'C', 'P', 'E'};
 	static int	nbr[3] = {0};
 	int			i;
@@ -73,8 +70,6 @@ static int	count_map_elements(char *line, int r, t_vars *vars)
 // * Checks if the map is rectangular (All lines being of equal lengths) and more
 void	validate_map_lines(t_parse *check, t_vars *vars)
 {
-	// TODO: Read each line of a map, checking if the length of each line matches the expected length
-	// TODO: Check if file is empty of doesn't contain anything valid (fail)
 	while (check->read > 0)
 	{
 		check->prev_len = check->line_len;
@@ -95,7 +90,6 @@ void	validate_map_lines(t_parse *check, t_vars *vars)
 // * Checks if the map file exists
 t_parse	valid_map_file(char *argv, t_vars *vars)
 {
-	// TODO: Open file (checking its existence) and initiate the checking process
 	t_parse	check;
 
 	ft_bzero(&check, sizeof(t_parse)); // ! lmao why ft_bzero..?

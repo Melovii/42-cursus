@@ -8,7 +8,6 @@ t_key   *init_keys(void)
 	keys = malloc(sizeof(t_key));
 	if (!keys)
 		return (NULL);
-	keys->dir = 0;
 	keys->w = 0;
 	keys->a = 0;
 	keys->s = 0;
@@ -52,7 +51,7 @@ int	key_release(int keycode, t_vars *vars)
 int	key_event(t_vars *vars)
 {
 	if (vars->coin == 0 && vars->map[vars->pos->y][vars->pos->x] == 'E')
-		ft_exit("YOU WON WOHOO!\n", vars, SUCCESS);
+		ft_exit("Thou hast triumphed, Tarnished. Thou art a true victor.\n", vars, SUCCESS);
 	else
 		move_player(vars); // process player movement.
 	return (1);

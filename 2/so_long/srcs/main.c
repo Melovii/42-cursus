@@ -36,7 +36,7 @@ void	init_program(t_vars *vars)
 		mlx_hook(vars->win, 2, 1L << 0, key_press, vars); // yeah like why is this not enough
 		mlx_hook(vars->win, 3, 1L << 1, key_release, vars); // wtf is dis
 		mlx_hook(vars->win, KEY_EXIT, 1L << 2, quit_event, vars); // uhm ok but why?
-		mlx_loop_hook(vars->mlx, gameloop, vars); // TODO: create event_loop / game_loop function!
+		mlx_loop_hook(vars->mlx, gameloop, vars);
 		mlx_loop(vars->mlx);
 }
 
