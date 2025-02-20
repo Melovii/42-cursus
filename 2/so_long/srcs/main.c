@@ -12,11 +12,13 @@ int	quit_event(t_vars *vars)
 void	init_program(t_vars *vars)
 {
 	// vars->mlx = mlx_init(); // ?! WHY IS THIS NOT NECESSARY HERE BUT NECESSARY IN MAIN !?
-	vars->img->img = mlx_new_image(vars->mlx, 100 * vars->map_width, 100 * vars->map_height);
+	// vars->img->img = mlx_new_image(vars->mlx, 100 * vars->map_width, 100 * vars->map_height);
+	vars->img->img = mlx_new_image(vars->mlx, 64 * vars->map_width, 64 * vars->map_height);
 	if (!vars->img->img)
 		ft_exit("Error\n=> Canʻt create image!", vars, FAILURE); // ? check norm might be long lol
 
-	vars->win = mlx_new_window(vars->mlx, 100 * vars->map_width, 100 * vars->map_height, TITLE); // ? check norm for this shit lmfao
+	// vars->win = mlx_new_window(vars->mlx, 100 * vars->map_width, 100 * vars->map_height, TITLE); // ? check norm for this shit lmfao
+	vars->win = mlx_new_window(vars->mlx, 64 * vars->map_width, 64 * vars->map_height, TITLE); // ? check norm for this shit lmfao
 	if (!vars->win)
 		ft_exit("Error\n=> Canʻt create window!", vars, FAILURE);
 

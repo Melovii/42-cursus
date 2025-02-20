@@ -20,6 +20,8 @@
 
 # define TITLE "mac-pan (pac-man lmao)"
 
+# define SCALE_FACTOR 2
+
 # define TEX_WALL "./textures/border.xpm"
 # define TEX_BLANK "./textures/space.xpm"
 # define TEX_PLAYER "./textures/pacman.xpm"

@@ -2,11 +2,11 @@
 
 // TODO: fix window scaling 
 // TODO: remove key->dir from struct and usage
-
+// TODO: oh btw test if map that has no access to finish gives error or not lmfao
 void draw_tile(t_vars *vars, int i, int x_index, int y_index)
 {
-    const double tile_width = 32;
-    const double tile_height = 32;
+    const double tile_width = 64;
+    const double tile_height = 64;
 
     double x = x_index * tile_width;
     double y = y_index * tile_height;
