@@ -1,6 +1,6 @@
 #include "../so_long.h"
 
-static void	dfs(t_vars *vars, int r, int c, int **visited, int *collected)
+static void	dfs(t_vars *vars, int r, int c, int **visited, int *collected, int *exit_reached)
 {
 	if (r < 0 || r >= vars->map_height || c < 0 || c >= vars->map_width)
 		return;
@@ -9,10 +9,13 @@ static void	dfs(t_vars *vars, int r, int c, int **visited, int *collected)
 	visited[r][c] = 1;
 	if (vars->map[r][c] == 'C')
 		(*collected)++;
-	dfs(vars, r + 1, c, visited, collected);
-	dfs(vars, r - 1, c, visited, collected);
-	dfs(vars, r, c + 1, visited, collected);
-	dfs(vars, r, c - 1, visited, collected);
+	if (vars->map[r][c] == 'E')
+		*exit_reached = 1; // Mark exit as reachable
+
+	dfs(vars, r + 1, c, visited, collected, exit_reached);
+	dfs(vars, r - 1, c, visited, collected, exit_reached);
+	dfs(vars, r, c + 1, visited, collected, exit_reached);
+	dfs(vars, r, c - 1, visited, collected, exit_reached);
 }
 
 static int	**allocate_visited(t_vars *vars)
@@ -37,17 +40,26 @@ int	check_path_to_coin(t_vars *vars)
 {
 	int	**visited;
 	int	collected;
+	int	exit_reached;
 	int	i;
 
-	collected = 0;
 	visited = allocate_visited(vars);
-	dfs(vars, vars->pos->y, vars->pos->x, visited, &collected);
+	if (!visited)
+		ft_exit(NULL, vars, FAILURE);
+	collected = 0;
+	exit_reached = 0;
+	dfs(vars, vars->pos->y, vars->pos->x, visited, &collected, &exit_reached);
 	i = 0;
 	while (i < vars->map_height)
 		free(visited[i++]);
 	free(visited);
-	return (collected == vars->coin);
+	if (collected != vars->coin)
+		ft_exit("Error\n=> Oh, Tarnished… you seek to claim all coins, yet the path is shattered and no grace shall guide you.\n", vars, FAILURE);
+	if (!exit_reached)
+		ft_exit("Error\n=> Tarnished… the grace does not shine upon this path. The exit is beyond reach.\n", vars, FAILURE);
+	return (1);
 }
+
 
 int	check_is_file(char *argv, t_vars *vars)
 {
