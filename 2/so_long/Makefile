@@ -1,9 +1,8 @@
 # ! IMPORTANT:
 # TODO: replace libraries with repos from intra42
 # ! I mean bro dw, worst case scenario you add it as an external function and you can say oh uh look aha aha (sex)
-
-# TODO: FIX
-# ! fix: doesn't work on map_eol.ber
+# ? do I check to replace get_next_line or at least put it somwhere else?
+# ! add the header files WHILE IN 42
 
 NAME		= so_long
 CC			= cc
