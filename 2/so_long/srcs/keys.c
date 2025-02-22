@@ -51,7 +51,7 @@ int	key_release(int keycode, t_vars *vars)
 int	key_event(t_vars *vars)
 {
 	if (vars->coin == 0 && vars->map[vars->pos->y][vars->pos->x] == 'E')
-		ft_exit("Thou hast triumphed, Tarnished. Thou art a true victor.\n", vars, SUCCESS);
+		ft_exit(MSG_WIN, vars, SUCCESS);
 	else
 		move_player(vars); // process player movement.
 	return (1);

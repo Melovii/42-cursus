@@ -80,7 +80,7 @@ void	validate_map_lines(t_parse *check, t_vars *vars)
 		check->read = get_next_line(check->fd, &check->line);
 		check->line_len = ft_strlen(check->line);
 		if (check->prev_len != -1 && check->prev_len != check->line_len)
-			ft_exitc(6, vars, FAILURE);
+			ft_exitc(4, vars, FAILURE);
 		count_map_elements(check->line, check->read, vars);
 		map_is_valid(check->line, vars);
 		if (check->total_lines++ == 0 || check->read == 0)
@@ -102,7 +102,7 @@ t_parse	valid_map_file(char *argv, t_vars *vars)
 	check.read = 1;
 	check.fd = open(argv, O_RDWR, 777);
 	if (check.fd < 0)
-		ft_exitc(5, vars, FAILURE);
+		ft_exitc(3, vars, FAILURE);
 	validate_map_lines(&check, vars);
 	close(check.fd);
 	ft_exitc(0, vars, FAILURE);

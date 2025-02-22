@@ -7,7 +7,7 @@ void    set_tex(char *path, t_vars *vars, t_img *tex)
 
 	if (fd < 0)
 	{
-		ft_putstr_fd("Error:\n=> Invalid image path!\n", 2);
+		ft_putstr_fd("Error:\n=> Foolish image path!\n", 2);
 		exit(0);
 	}
 	tex->img = mlx_xpm_file_to_image(vars->mlx, path, &vars->tex->width, &vars->tex->height);

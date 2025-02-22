@@ -60,14 +60,12 @@ int ft_exitc(int set, t_vars *vars, int ret)
         if (!vars->fail)
             return (0);
         else if (vars->fail == 1)
-            ft_exit("Error\n=> Invalid map\n", vars, ret);
+            ft_exit("Error\n=> Foolish map\n", vars, ret);
         else if (vars->fail == 2)
-            ft_exit("Error\n=> Invalid char in map\n", vars, ret);
-        else if (vars->fail == 4)
-            ft_exit("Error\n=> Invalid map\n", vars, ret);
-        else if (vars->fail == 5)
+            ft_exit("Error\n=> Foolish char in map\n", vars, ret);
+        else if (vars->fail == 3)
             ft_exit("Error\n=> Map does not exist\n", vars, ret);
-        else if (vars->fail == 6)
+        else if (vars->fail == 4)
             ft_exit("Error\n=> Map error\n", vars, ret);
     }
     else

@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	t_vars	*vars;
 
 	if (argc != 2)
-		ft_exit("Error\n=> Invalid arguments!\n", NULL, FAILURE);
+		ft_exit("Error\n=> Foolish arguments!\n", NULL, FAILURE);
 
 	vars = ft_calloc(sizeof(t_vars), 1); // ! Explain why I used ft_calloc and not malloc here
 	if (!vars)

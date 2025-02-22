@@ -54,9 +54,9 @@ int	check_path_to_coin(t_vars *vars)
 		free(visited[i++]);
 	free(visited);
 	if (collected != vars->coin)
-		ft_exit("Error\n=> Oh, Tarnished… you seek to claim all coins, yet the path is shattered and no grace shall guide you.\n", vars, FAILURE);
+		ft_exit(MSG_COINS, vars, FAILURE);
 	if (!exit_reached)
-		ft_exit("Error\n=> Tarnished… the grace does not shine upon this path. The exit is beyond reach.\n", vars, FAILURE);
+		ft_exit(MSG_EXIT, vars, FAILURE);
 	return (1);
 }
 
@@ -67,7 +67,7 @@ int	check_is_file(char *argv, t_vars *vars)
 
 	ext = ft_strrchr(argv, '.');
 	if (!ext || ft_strncmp(ext, ".ber", ft_strlen(argv)) != 0)
-		ft_exit("Error\nInvalid file extension\n", vars, FAILURE);
+		ft_exit("Error\nFoolish file extension\n", vars, FAILURE);
 	return (1);
 }
 
@@ -76,6 +76,6 @@ void	validate_elements(int *nbr, int r, t_vars *vars)
 	if (!r)
 	{
 		if (nbr[0] < 1 || nbr[1] != 1 || nbr[2] != 1)
-			ft_exitc(4, vars, FAILURE);
+			ft_exitc(1, vars, FAILURE);
 	}
 }
