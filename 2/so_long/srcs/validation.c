@@ -67,7 +67,7 @@ int	check_is_file(char *argv, t_vars *vars)
 
 	ext = ft_strrchr(argv, '.');
 	if (!ext || ft_strncmp(ext, ".ber", ft_strlen(argv)) != 0)
-		ft_exit("Error\nFoolish file extension\n", vars, FAILURE);
+		ft_exit("Error\n=> Foolish file extension\n", vars, FAILURE);
 	return (1);
 }
 

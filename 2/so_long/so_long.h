@@ -28,6 +28,10 @@
 # define TEX_COIN "./textures/rune.xpm"
 # define TEX_EXIT "./textures/door.xpm"
 
+# define MSG_COINS "Error\n=> Oh, Tarnished… you seek to claim all coins, yet the path is shattered and no grace shall guide you.\n"
+# define MSG_EXIT "Error\n=> Tarnished… the grace does not shine upon this path. The exit is beyond reach.\n"
+# define MSG_WIN "Thou hast triumphed, Tarnished. Thou art a true victor.\n"
+
 // TODO: add definitions for long ass fails/msgs/exits
 
 // * Holds info related to map file reading and parsing
@@ -103,7 +107,7 @@ int			gameloop(t_vars *vars);
 void		move_player(t_vars *vars);
 void 		draw_map(t_vars *vars);
 void 		draw_player(t_vars *vars);
-int	check_path_to_coin(t_vars *vars);
+int			check_path_to_coin(t_vars *vars);
 
 // ! and other function prototypes lol
 
