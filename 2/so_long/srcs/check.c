@@ -1,38 +1,27 @@
 #include "../so_long.h"
 
-// ! why are my functions static ?????????
-
-static int	is_border_line(char *line, int len)
+static int	map_has_walls(char *line, int is_border, int len, t_vars *vars)
 {
 	int	i;
 
-	(void)len;
 	i = 0;
-	while (line[i])
+	if (is_border == 1)
 	{
-		if (line[i] != '1')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static int	map_has_walls(char *line, int is_border, int len, t_vars *vars)
-{
-	if (is_border)
-	{
-		if (!is_border_line(line, len))
-			ft_exitc(1, vars, FAILURE);
+		while (line[i])
+		{
+			if (line[i] != '1')
+				ft_exitc(1, vars, FAILURE);
+			i++;
+		}
 	}
 	else
 	{
-		if (line[0] != '1' || line[len - 1] != '1')
+		if ((line[i] != '1') || (line[len - 1] != '1'))
 			ft_exitc(1, vars, FAILURE);
 	}
 	return (1);
 }
 
-// * Checks if map line contains only valid characters
 static int	map_is_valid(char *line, t_vars *vars)
 {
 	int	i;
@@ -50,10 +39,9 @@ static int	map_is_valid(char *line, t_vars *vars)
 	return (1);
 }
 
-// * Checks if there exists: 1 exit, 1 starting position, and at least 1 coin
 static int	count_map_elements(char *line, int r, t_vars *vars)
 {
-	static int	nbr[3] = {0}; // C, P, E counts
+	static int	nbr[3] = {0};
 	int			i;
 
 	i = 0;
@@ -71,7 +59,6 @@ static int	count_map_elements(char *line, int r, t_vars *vars)
 	return (1);
 }
 
-// * Checks if the map is rectangular (All lines being of equal lengths) and more
 void	validate_map_lines(t_parse *check, t_vars *vars)
 {
 	while (check->read > 0)
@@ -91,12 +78,11 @@ void	validate_map_lines(t_parse *check, t_vars *vars)
 	}
 }
 
-// * Checks if the map file exists
 t_parse	valid_map_file(char *argv, t_vars *vars)
 {
 	t_parse	check;
 
-	ft_bzero(&check, sizeof(t_parse)); // ! lmao why ft_bzero..?
+	ft_bzero(&check, sizeof(t_parse));
 	vars->fail = 0;
 	check.line_len = -1;
 	check.read = 1;

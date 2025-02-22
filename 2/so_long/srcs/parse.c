@@ -4,7 +4,7 @@ void	extract_map_data(t_vars *vars, t_parse map_info)
 {
 	int	row;
 	int	col;
-	
+
 	row = 0;
 	vars->coin = 0;
 	while (vars->map[row])
@@ -24,8 +24,8 @@ void	extract_map_data(t_vars *vars, t_parse map_info)
 		}
 		row++;
 	}
-	vars->map_width = map_info.line_len;		// Lenght of the current line
-	vars->map_height = map_info.total_lines;	// Total number of lines (rows) in the map
+	vars->map_width = map_info.line_len;
+	vars->map_height = map_info.total_lines;
 }
 
 void	parse_map(char *argv, t_vars *vars)
@@ -50,5 +50,5 @@ void	parse_map(char *argv, t_vars *vars)
 	close (map_info.fd);
 	extract_map_data(vars, map_info);
 	if (!check_path_to_coin(vars))
-		ft_exit("Error\n=> Oh, Tarnished… you seek to claim all coins, yet the path is shattered and no grace shall guide you.\n", vars, FAILURE);
+		ft_exit(MSG_COINS, vars, FAILURE);
 }
