@@ -1,3 +1,6 @@
 [submodule "3/minishell"]
 	path = 3/minishell
 	url = git@github.com:Melovii/minishell.git
+[submodule "3/philo"]
+	path = 3/philo
+	url = git@github.com:Melovii/philo.git
