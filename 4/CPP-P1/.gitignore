@@ -1,0 +1,9 @@
+# Object files
+*.o
+
+# CPP0 Executables
+megaphone
+phonebook
+account
+
+# CPP1 ... (more to come :eyes:)
