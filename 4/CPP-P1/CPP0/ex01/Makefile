@@ -11,7 +11,8 @@ INCLUDES	=	-Iincludes
 SRCS_DIR	=	srcs
 OBJS_DIR	=	objs
 
-SRC_FILES	=	phonebook.cpp		\
+SRC_FILES	=	PhoneBook.cpp		\
+				Contact.cpp			\
 
 OBJ_FILES	=	$(SRC_FILES:.cpp=.o)
 
