@@ -2,9 +2,9 @@
 NAME		=	account
 
 # Flags and settings
-STD			=	c++98
+STD			=	-std=c++98
 CXX			=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CXXFLAGS	=	-Wall -Wextra -Werror $(STD)
 
 INCLUDES	=	-Iincludes
 
