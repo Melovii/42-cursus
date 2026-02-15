@@ -10,3 +10,6 @@
 [submodule "4/Netpractice"]
 	path = 4/Netpractice
 	url = git@github.com:Melovii/Netpractice.git
+[submodule "4/CPP-1"]
+	path = 4/CPP-1
+	url = git@github.com:Melovii/CPP-1.git
