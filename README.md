@@ -13,3 +13,10 @@ My 42 school curriculum projects.
 | 2   | [so_long](https://github.com/Melovii/42-cursus/tree/main/2/so_long)     | C 																														| ![so_long](https://img.shields.io/badge/:-100-success?style=flat-square&logo=42)            	 | Create a basic computer graphics project |
 | 3   | [minishell](https://github.com/Melovii/minishell)     | C 																														| ![minishell](https://img.shields.io/badge/:-101-success?style=flat-square&logo=42)            	 | Create a minitature shell program (Bash) |
 | 3   | [philosophers](https://github.com/Melovii/philo)     | C 																														| ![philo](https://img.shields.io/badge/:-100-success?style=flat-square&logo=42)            	 |  Solve the dining philosophers  problem with pthreads and mutexes |
+| 4   | [CPP-0](https://github.com/Melovii/CPP-1/tree/main/CPP0)     | C++  | ![cpp0](https://img.shields.io/badge/:-80-success?style=flat-square&logo=42) | C++ basics, classes, and OOP fundamentals |
+| 4   | [CPP-1](https://github.com/Melovii/CPP-1/tree/main/CPP1)     | C++  | ![cpp1](https://img.shields.io/badge/:-80-success?style=flat-square&logo=42) | C++ memory, references, and more OOP |
+| 4   | [CPP-2](https://github.com/Melovii/CPP-1/tree/main/CPP2)     | C++  | ![cpp2](https://img.shields.io/badge/:-80-success?style=flat-square&logo=42) | C++ operator overloading, canonical form |
+| 4   | [CPP-3](https://github.com/Melovii/CPP-1/tree/main/CPP3)     | C++  | ![cpp3](https://img.shields.io/badge/:-80-success?style=flat-square&logo=42) | C++ inheritance, polymorphism |
+| 4   | [CPP-4](https://github.com/Melovii/CPP-1/tree/main/CPP4)     | C++  | ![cpp4](https://img.shields.io/badge/:-80-success?style=flat-square&logo=42) | C++ abstract classes, interfaces |
+| 4   | [cub3D](https://github.com/Melovii/cub3D)     | C  | ![cub3d](https://img.shields.io/badge/:-125-success?style=flat-square&logo=42) | 3D raycasting engine, Wolfenstein-like |
+| 4   | [Netpractice](https://github.com/Melovii/Netpractice)     | Network  | ![netpractice](https://img.shields.io/badge/:-100-success?style=flat-square&logo=42) | Network configuration and TCP/IP concepts |
