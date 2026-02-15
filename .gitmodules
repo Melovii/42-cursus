@@ -4,9 +4,6 @@
 [submodule "3/philo"]
 	path = 3/philo
 	url = git@github.com:Melovii/philo.git
-[submodule "4/CPP-1"]
-	path = 4/CPP-1
-	url = git@github.com:Melovii/CPP-1.git
 [submodule "4/cub3D"]
 	path = 4/cub3D
 	url = git@github.com:melmut-42/cub3D.git
